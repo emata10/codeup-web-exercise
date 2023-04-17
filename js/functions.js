@@ -60,7 +60,7 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 
-function isTwo(number(2))
+function isTwo(number){
     if (number === 2) {
         console.log("The number " + number + " is two!")
     } else {
@@ -115,6 +115,7 @@ console.log(isTwo(random))
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
 (function () {
     let originalPrice = 100;
     let discountPercent = .25; // 25%
@@ -123,4 +124,5 @@ console.log(isTwo(random))
         return originalPrice - discountAmount
     }
     console.log(applyDiscount())
-})();
+
+})()
