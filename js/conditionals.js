@@ -30,7 +30,7 @@ function analyzeColor (color) {
     } else {
         return "Unfortunately " + color + " is not the color of water!"
     }}
-console.log(analyzeColor('green'));
+console.log(analyzeColor('Pink'));
 
 // Don't change the next two lines!
 // These lines create two variables for you:
@@ -145,12 +145,15 @@ alert( "Tell me whether the number is even or odd");
 alert(" What's the number plus 100?");
 alert("is the number a negative or positive");
 
+function analyzeColor (randomColor) {
+    if (randomColor === 'yellow') {
+        return "The color of the sun is yellow"
+    } else if (randomColor === 'cyan') {
+        return "I don't know anything about cyan"
+    } else {
+        return "Unfortunately " + randomColor + " is not the color of water!"
+    }}
 
-function randomNumber(someNumber) {
-    return someNumber ;
-    console.log('you will never see this.');
-    return someNumber ;
-}
 
 
 
