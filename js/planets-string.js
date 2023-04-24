@@ -10,7 +10,7 @@
 	 * planetsArray.
 	 * console.log planetsArray to check your work
 	 */
-	
+		var planetsArray = ("Mercury", "Venus", "EarthMars", "Jupiter",Saturn|Uranus|Neptune"
 	// console.log(planetsArray);
 	
 	/**
