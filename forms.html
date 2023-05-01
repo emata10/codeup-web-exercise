@@ -1,40 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Register With Us</title>
-
-<h1>Register With Us</h1>
+		<meta charset="UTF-8">
+		<title>Register With Us</title>
+		
+		<h1>Register With Us</h1>
 <body>
-<p>This is a <br> paragraph with a line break.</p>
-<form method="POST" action="https://request-inspector.glitch.me/">
-	
-	<label for="username">Username</label>
-	<input id="username" name="username" type="text">
-	<br>
-	
-	<label for="password">Password</label>
-	<input id="password" name="password" type="password">
-	<br>
-	
-	<input type="submit">
+
+<form method="post" action="https://request-inspector.glitch.me/">
+		<label for="Username">Username</label>
+		<label for="username"></label><input id="username" name="username" type="text">
+		<br>
+		<label for="password">Password</label>
+		<input id="password" name="password" type="password">
+		<br>
+		<input type="submit">
+		<br>
+		<br>
+		<form>
+				<label>
+						<textarea name= "comment" rows="8" cols="80" maxlength="500" placeholder="Bio(tell us about you)..." required></textarea>
+				</label>
+		</form>
+		
+		<form action="https://request-inspector.glitch.me">
+				<p>How did you hear about us?</p>
+				<input type="radio" id="Billboard"
+							 name="How did you hear about us."	value="Billboard">
+				<label for="Billboard">Billboard</label><br>
+				<input type="radio" id="Radio Advertisement"
+							 name="How did you hear about us?" value="Radio Advertisement"	>
+				<label for="Radio Advertisement">Radio Advertisement</label><br>
+				<input type="radio" id="Internet"
+							 name="How did you hear about us."	value="Internet">
+				<label for="Internet">Internet</label><br>
+				<label for="other"></label><input type="radio" id="other"
+																					name="How did you hear about us." value="Other">
+				<label for="Other">Other</label><br>
+				<br>
+				
+				<label for="What web browser do you use?">What web browser do you use?:</label><br>
+				<br>
+				<select name="Web page" id="What web browser do you use?">
+						<option value="">--Please choose an option--</option>
+						<option value="Google">Google</option>
+						<option value="Yahoo">Yahoo</option>
+						<option value="Duck">Duck Duck Go</option>
+						<option value="safari">Safari</option>
+				</select>
+				<br>
+				<br>
+				<input type="submit">
+		</form>
 </form>
-<br>
-<label>
-<p>Tell us a little about yourself.</p>
-    <textarea id="GFG" name="GFG_text"></textarea>
-</label>
-
-<p>How did you hear about us?</p>
-<label>
-	<select name="How did you hear about us?">
-		<option value="Billboard">Billboard</option>
-		<option value="Radio">Radio advertisement</option>
-		<option value="Internet">Internet</option>
-		<option value="other">other</option>
-	</select>
-</label>
-
-
 </body>
-</html>
+		
+
+
+
