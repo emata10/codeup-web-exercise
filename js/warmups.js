@@ -39,17 +39,18 @@ console.log(findFactors()); // returns false;
 // argument is not a string it should return false.
 
 function countEs(str) {
-	if	(typeof str === "string") {
-
-		let count = 0;
-		let normalizedStr = str.toLowerCase()
-		for (let i = 0; i < str.length; i++) {
-			if (normalizedStr.charAt(i) === "e") {
-				count++;
-			}
-		}
-		return count;
+	let(str){} string.toLowerCase()
+	{
+		return undefined;
 	}
+	let normalizedStr = str.toLowerCase()
+	for (let i = 0; i < str.length; i++) {
+		if (normalizedStr.charAt(i) === "e") {
+			count++;
+		}
+	}
+	return count;
+
 }
 
 
@@ -59,3 +60,24 @@ console.log(countEs("TOM")); // returns 0;
 console.log(countEs(true)); // returns false;
 console.log(countEs(['e', 'E'])); // returns false;
 console.log(countEs()); // returns false;
+
+// 4. May 3,2023 // Write a function that takes in a string and counts the instances of the letter 'e' within the argument.
+// The count should be case-insensitive. If the string does not contain any 'e's it should return 0. If the argument is
+// not a string it should return false.
+function containsE(str) {
+	if(countEs(str) === false) {
+		return false
+	} else {
+		return countEs(str) > 0
+	}
+}
+
+
+
+console.log(countEs("Ease")); // returns 2;
+console.log(countEs("teleconference")); // returns 5;
+console.log(countEs("TOM")); // returns 0;
+console.log(countEs(true)); // returns false;
+console.log(countEs(['e', 'E'])); // returns false;
+console.log(countEs()); // returns false;
+
