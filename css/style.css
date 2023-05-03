@@ -1,6 +1,63 @@
-    style,
-    .fancy-header {
-        color: Purple;
-        text-decoration: underline;
+h1 {
+    text-align: center;
     }
-    .style
+.style,
+    .fancy-header {
+    color: Purple;
+    text-decoration: underline;
+}
+.extra-large {
+    font-size: 50px;
+}
+body {
+    background-color: coral ;
+}
+.tiledBackground {
+    background-image: url(https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png);
+    background-size: 150px;
+    width: 300px;
+    height: 300px;
+    border: 2px solid;
+    color: pink;
+    float: inherit;
+}
+@counter-style thumbs {
+    system: cyclic;
+    symbols: "\1F44D";
+    suffix: " ";
+}
+
+ul {
+    list-style: thumbs;
+}
+ol {
+    list-style: square;
+}
+a {
+    outline: none;
+}
+
+a:link {
+    color: #6900ff;
+}
+
+a:visited {
+    color: #a5c300;
+}
+
+a:focus {
+    text-decoration: none;
+    background: #bae498;
+}
+
+a:hover {
+    text-decoration: none;
+    background: #cdfeaa;
+}
+
+a:active {
+    background: #6900ff;
+    color: #cdfeaa;
+}
+
+

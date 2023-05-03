@@ -1,61 +1,61 @@
 (function() {
-	"use strict";
-	
-	/**
-	 * TODO:
-	 * Create an object with firstName and lastName properties that are strings
-	 * with your first and last name. Store this object in a variable named
-	 * `person`.
-	 *
-	 * Example:
-	 *  > console.log(person.firstName) // "Rick"
-	 *  > console.log(person.lastName) // "Sanchez"
-	 */
-	
-	var person = {firstName: "Emilia",  lastName: "Mata"}
-	
-	console.log(person.firstName);
-	console.log(person.lastName);
-	
-	/**
-	 * TODO:
-	 * Add a sayHello method to the person object that returns a greeting using
-	 * the firstName and lastName properties.
-	 * console.log the returned message to check your work
-	 *
-	 * Example
-	 * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
-	 */
-		person = {
-			sayHello: ("Hello from" +   ( person.firstName )  +  ( person.lastName ))
-		}
-		
-		console.log(person.sayHello);
-		
-	/** TODO:
-	* HEB has an offer for the shoppers that buy products amounting to
-	* more than $200. If a shopper spends more than $200, they get a 12%
-	 * discount. Write a JS program, using conditionals, that logs to the
-    * browser, how much Ryan, Cameron and George need to pay. We know that
-	 * Cameron bought $180, Ryan $250 and George $320. Your program will have to
-	* display a line with the name of the person, the amount before the
-	* discount, the discount, if any, and the amount after the discount.
-	 * Uncomment the lines below to create an array of objects where each object
-	* represents one shopper. Use a foreach loop to iterate through the array,
-	* and console.log the relevant messages for each person
-	*/
-	
-		
-	var shoppers =  [
-		{name: 'Cameron', amount: 180},
-		{name: 'Ryan', amount: 250},
-		{name: 'George', amount: 320},
-      ];
-		
-	shoppers.forEach(function(shopper) {
-		if (shopper.amount > 200) {
-		}
-		console.log(`${shopper.name}spent$ + amountBeforeEachDiscount.toFixed(2) + 'got a discount of $') +
+    "use strict";
+
+    /**
+     * TODO:
+     * Create an object with firstName and lastName properties that are strings
+     * with your first and last name. Store this object in a variable named
+     * `person`.
+     *
+     * Example:
+     *  > console.log(person.firstName) // "Rick"
+     *  > console.log(person.lastName) // "Sanchez"
+     */
+
+    var person = {firstName: "Emilia",  lastName: "Mata"}
+
+    console.log(person.firstName);
+    console.log(person.lastName);
+
+    /**
+     * TODO:
+     * Add a sayHello method to the person object that returns a greeting using
+     * the firstName and lastName properties.
+     * console.log the returned message to check your work
+     *
+     * Example
+     * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
+     */
+    person = {
+        sayHello: ("Hello from" +   ( person.firstName )  +  ( person.lastName ))
+    }
+
+    console.log(person.sayHello);
+
+    /** TODO:
+     * HEB has an offer for the shoppers that buy products amounting to
+     * more than $200. If a shopper spends more than $200, they get a 12%
+     * discount. Write a JS program, using conditionals, that logs to the
+     * browser, how much Ryan, Cameron and George need to pay. We know that
+     * Cameron bought $180, Ryan $250 and George $320. Your program will have to
+     * display a line with the name of the person, the amount before the
+     * discount, the discount, if any, and the amount after the discount.
+     * Uncomment the lines below to create an array of objects where each object
+     * represents one shopper. Use a foreach loop to iterate through the array,
+     * and console.log the relevant messages for each person
+     */
+
+
+    var shoppers =  [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320},
+    ];
+
+    shoppers.forEach(function(shopper) {
+        if (shopper.amount > 200) {
+        }
+        console.log(`${shopper.name}spent$ + amountBeforeEachDiscount.toFixed(2) + 'got a discount of $') +
 		discount.toFixed(2) + 'and needs to pay $' + amountAfterDiscount.toFixed(2)),
 		
 	let books = [
@@ -131,12 +131,12 @@
 		 * - Create a function named `showBookInfo` that accepts a book object and
 		 *   outputs the information described above. Refactor your loop to use your
 		 *   `
-		
-		function showBookInfo(strings) {
-		
-		}
-		
-		showBookInfo` function.
+
+        function showBookInfo(strings) {
+
+        }
+
+        showBookInfo` function.
 		
 		function createBook(title, firstName, lastName) {
 			let bookObject = {
