@@ -81,3 +81,19 @@ console.log(countEs(true)); // returns false;
 console.log(countEs(['e', 'E'])); // returns false;
 console.log(countEs()); // returns false;
 
+// 5. May 4
+//Write a function named fizzBuzz that prints to the console the number 1 - 100. If the number is divisible by 3 print fizz
+//instead of the number. If the number is divisible by 5 print buzz. If the number is divisible by both 3 and 5 print fizzBuzz.
+
+function fizzBuz() {
+	for (i = 1; i <= 100; i++)
+		if (i % 3 === 0)
+			console.log("fizz")
+		} else if(i % 5 === 0){
+	console.log("Buzz"){
+	} else {
+		console.log(i)
+	}
+
+}
+
