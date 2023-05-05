@@ -5,11 +5,11 @@
     --light-bg: #FFF;
     --separator-color: #DDD;
 }
-* {
+ * {
     box-sizing: border-box;
 }
 body, html {
-    background-color: #E6ECF0;
+    background-color: var(--main-bg);
     height: 100%;
     width: 100%;
     margin: 0;
@@ -21,58 +21,113 @@ header {
     background-size: cover;
     min-height: 300px;
     padding-top: 275px;
-    postion: absolute;
 }
 a {
-    color: #848487;
+    color: var(--link-color);
 }
 .top-nav {
-    background: #FFF;
+    background: var(--light-bg);
+    Position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 .nav {
-    background-color: #E6ECF0;
-    list-style-type:text-right;
-    text-align: left;
-    padding: 1.5EM;
+    list-style-type: none;
+    padding: 0;
     margin: 0;
 }
-
-.nav li {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-}
-
 .nav-link {
-    color:#3B94D9;
+    color: var(--main-link-color);
     font-weight: bold;
     text-decoration: none;
 }
-.nav-link:hover {
-    color: #3B94D9;
+.nav-link-hover {
+    color: var(--link-color);
 }
+
+.nav-item {
+    display: var(--link-color);
+    padding: 1.5em;
+}
+
 .profile {
-    background: #FFF;
+    background: var(--light-bg);
+    height: 80px;
+    position: relative;
 }
+.profile-image {
+    position: absolute;
+    top: -28px;
+}
+
+.profile-form {
+    float: right;
+    line-height: 80px;
+}
+.profile-details, .timeline, .who-to-follow {
+    margin: 0 .5em;
+    float: left;
+}
+
+.profile-details, .who-to-follow{
+    width: calc(25% - 1em);
+}
+
 .btn {
-    border: 1px solid #848487;
-    color: #848487;
-    background: #FFF;
+    border: 1px solid var(--main-link-color);
+    color: var(--main-link-color);
+    background: var(--light-bg);
     font-weight: bold;
     padding: 8px;
     border-radius: 5px;
 }
+
 .btn-large {
     font-size: 1.3em;
     padding: 10px;
 }
 .img-circle {
     border-radius: 100%;
-    border: 4px solid #FFF;
+    border: 4px solid var(--light-bg);
 }
 .text-right {
     text-align: right;
 }
 .text-muted {
-    color: #848487;
+    color: var(--main-link-color);
+}
+
+.container{
+    margin-top: 2em;
+}
+
+.timeline{
+    width: calc(50% - 1em);
+}
+
+.media {
+    width: 100%;
+    background-color: var(--light-bg);
+    border-bottom: 1px solid var(--separator-color);
+    padding: .5em;
+    overflow: auto;
+}
+
+.media-image{
+    width: 50px;
+    float: left;
+    margin-top: 1.33em;
+}
+
+.media-body{
+    width: calc(100% - 50px);
+    float: left;
+}
+
+.profile-items{
+    list-style: none;
+    padding: 0;
+}
+.profile-entry{
+    margin: .5em;
 }
