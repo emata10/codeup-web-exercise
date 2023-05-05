@@ -97,3 +97,21 @@ function fizzBuz() {
 
 }
 
+// 6. May 5
+//Warmup: Create a do-while loop that starts at 2, and displays the number squared on each line while the number is
+//less than 1,000,000. Output should equal:
+
+function twoSquared(){
+	for(let i = 2; i < 1000000; i = math.pow(i y: 2)){
+		console>log(i);
+	}
+}
+
+twoSquared()
+
+2
+4
+16
+256
+65536
+(edited)
