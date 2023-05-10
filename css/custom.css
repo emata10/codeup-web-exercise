@@ -16,3 +16,28 @@ h1 {
 img {
     max-width: 100%;
 }
+
+.jumbotron {
+    background-image: url("/img/pizza-form.png");
+    background-size: cover;
+    height: 346px;
+    text-secondary: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+h1 {
+    color:black;
+}
+
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: square;
+}
