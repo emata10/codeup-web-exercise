@@ -1,4 +1,4 @@
-"use strict";
+/*"use strict";
 
 //1. Warmup:
 function seven() {
@@ -80,12 +80,12 @@ console.log(countEs("TOM")); // returns 0;
 console.log(countEs(true)); // returns false;
 console.log(countEs(['e', 'E'])); // returns false;
 console.log(countEs()); // returns false;
-
+*/
 // 5. May 4
 //Write a function named fizzBuzz that prints to the console the number 1 - 100. If the number is divisible by 3 print fizz
 //instead of the number. If the number is divisible by 5 print buzz. If the number is divisible by both 3 and 5 print fizzBuzz.
 
-function fizzBuz() {
+/*function fizzBuz() {
 	for (i = 1; i <= 100; i++)
 		if (i % 3 === 0)
 			console.log("fizz")
@@ -113,11 +113,11 @@ twoSquared()
 4
 16
 256
-65536
+65536*/
 
 // Write a function that takes in an array of numbers and returns all of the numbers added together (We'll be assuming
 // that only arrays are going to be used with this function).//
-function addEmUp(arr) {
+/*function addEmUp(arr) {
 	let sum = 0;
 	for (let i = 0; i < arr.length; i++) {
 		sum += arr[i];
@@ -131,4 +131,22 @@ function addEmUp(arr) {
 // console.log(addEmUp([44,10,7])); // returns 61
 // console.log(addEmUp([-100])); // returns -100
 // console.log(addEmUp([1,2,3,4,5,6,7,8,9,10])); // returns 55
-// console.log(addEmUp([-13, -92, -3500])) // returns -3605
+// console.log(addEmUp([-13, -92, -3500])) // returns -3605*/
+
+// Write a function that takes in a string and returns an object describing the string. The object should have a string
+// property that contains the original string, a numberOfEs property that contains a count of the number of e's in the
+// string (case-insensitive), and a isEvenLength property that contains a boolean for whether the string's length is even or not.
+
+function explainString(str) {
+	const numberOfEs = (str.match(/e/ig) || []).length;
+	return {
+		string: str,
+		numberOfEs,
+		isEvenLength:str.length % 2 === 0
+	};
+}
+
+
+console.log(explainString("cheese"));
+console.log(explainString(str))
+
