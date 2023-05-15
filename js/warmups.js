@@ -137,16 +137,54 @@ twoSquared()
 // property that contains the original string, a numberOfEs property that contains a count of the number of e's in the
 // string (case-insensitive), and a isEvenLength property that contains a boolean for whether the string's length is even or not.
 
-function explainString(str) {
-	const numberOfEs = (str.match(/e/ig) || []).length;
-	return {
-		string: str,
-		numberOfEs,
-		isEvenLength:str.length % 2 === 0
-	};
+// function explainString(str) {
+// 	const numberOfEs = (str.match(/e/ig) || []).length;
+// 	return {
+// 		string: str,
+// 		numberOfEs,
+// 		isEvenLength:str.length % 2 === 0
+// 	};
+// }
+
+
+// // 8. May 12  // Write a function that takes in an array of objects and returns an array containing all the names from
+// // the original array.
+// function extractNames(hamsters) {
+// 	const namesArray = [];
+// 	hamsters.forEach(hamster => {
+// 		namesArray.push(hamster.name);
+// 	});
+// 	return namesArray;
+//
+// }
+
+// May 15 // Write a function that takes in an array of objects and returns the object with the largest heightInMM
+// property
+
+
+function largestObjectByHeight(objects) {
+	let largestObject = objects[0];
+	for (let i = 1; i < objects.length; i++) {
+		if (objects[i].heightInMM > largestObject.heightInMM) {
+			largestObject = objects[i];
+		}
+	}
+	return largestObject;
 }
 
 
-console.log(explainString("cheese"));
-console.log(explainString(str))
+let animal = {
+	name: "Boss",
+	heightInMM: 120,
+	fur: ['brown', 'white'],
+	gender: "male",
+	dateOfBirth: "September 21"
+};
+
+console.log(animal.name); // output: "Boss"
+console.log(animal.heightInMM); // output: 120
+console.log(animal.fur); // output: ["brown", "white"]
+console.log(animal.gender); // output: "male"
+console.log(animal.dateOfBirth); // output: "September 21"
+
 
