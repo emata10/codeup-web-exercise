@@ -162,29 +162,74 @@ twoSquared()
 // property
 
 
-function largestObjectByHeight(objects) {
-	let largestObject = objects[0];
-	for (let i = 1; i < objects.length; i++) {
-		if (objects[i].heightInMM > largestObject.heightInMM) {
-			largestObject = objects[i];
-		}
-	}
-	return largestObject;
+// function largestObjectByHeight(objects) {
+// 	let largestObject = objects[0];
+// 	for (let i = 1; i < objects.length; i++) {
+// 		if (objects[i].heightInMM > largestObject.heightInMM) {
+// 			largestObject = objects[i];
+// 		}
+// 	}
+// 	return largestObject;
+// }
+//
+//
+// let animal = {
+// 	name: "Boss",
+// 	heightInMM: 120,
+// 	fur: ['brown', 'white'],
+// 	gender: "male",
+// 	dateOfBirth: "September 21"
+// };
+//
+// console.log(animal.name); // output: "Boss"
+// console.log(animal.heightInMM); // output: 120
+// console.log(animal.fur); // output: ["brown", "white"]
+// console.log(animal.gender); // output: "male"
+// console.log(animal.dateOfBirth); // output: "September 21"
+
+
+// May 16. // Write a function that takes in an array of objects and returns an array of the objects from the array that only have one fur color.
+//
+// function singleFurColor() {}
+//
+// console.log(singleFurColor(hamsters)); // returns [{name: "Bijou", heightInMM: 75, fur: ['white'], gender: "female", dateOfBirth: "July 10"}];
+//
+
+
+function singleFurColor(hamsters) {
+    return hamsters.filter(hamster => hamster.fur.length === 1);
 }
 
+const hamsters = [
+    {
+        name: "Bijou",
+        heightInMM: 75,
+        fur: ['white'],
+        gender: "female",
+        dateOfBirth: "July 10"
+    },
+    {
+        name: "Whiskers",
+        heightInMM: 85,
+        fur: ['brown', 'white'],
+        gender: "male",
+        dateOfBirth: "May 24"
+    },
+    {
+        name: "Pax",
+        heightInMM: 80,
+        fur: ['black', 'white'],
+        gender: "male",
+        dateOfBirth: "April 1"
+    }
+];
 
-let animal = {
-	name: "Boss",
-	heightInMM: 120,
-	fur: ['brown', 'white'],
-	gender: "male",
-	dateOfBirth: "September 21"
-};
+console.log(singleFurColor(hamsters));
 
-console.log(animal.name); // output: "Boss"
-console.log(animal.heightInMM); // output: 120
-console.log(animal.fur); // output: ["brown", "white"]
-console.log(animal.gender); // output: "male"
-console.log(animal.dateOfBirth); // output: "September 21"
-
-
+function oneFunColor(arr){
+    lat newArr =[]
+    arr.forEach{functional(elem)
+    if(elem.fur.lenght === 1){
+    }
+    }
+}
