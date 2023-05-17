@@ -196,40 +196,57 @@ twoSquared()
 //
 
 
-function singleFurColor(hamsters) {
-    return hamsters.filter(hamster => hamster.fur.length === 1);
-}
+// function singleFurColor(hamsters) {
+//     return hamsters.filter(hamster => hamster.fur.length === 1);
+// }
+//
+// const hamsters = [
+//     {
+//         name: "Bijou",
+//         heightInMM: 75,
+//         fur: ['white'],
+//         gender: "female",
+//         dateOfBirth: "July 10"
+//     },
+//     {
+//         name: "Whiskers",
+//         heightInMM: 85,
+//         fur: ['brown', 'white'],
+//         gender: "male",
+//         dateOfBirth: "May 24"
+//     },
+//     {
+//         name: "Pax",
+//         heightInMM: 80,
+//         fur: ['black', 'white'],
+//         gender: "male",
+//         dateOfBirth: "April 1"
+//     }
+// ];
+//
+// console.log(singleFurColor(hamsters));
+//
+// function oneFunColor(arr){
+//     lat newArr =[]
+//     arr.forEach{functional(elem)
+//     if(elem.fur.lenght === 1){
+//     }
+//     }
+// }
 
-const hamsters = [
-    {
-        name: "Bijou",
-        heightInMM: 75,
-        fur: ['white'],
-        gender: "female",
-        dateOfBirth: "July 10"
-    },
-    {
-        name: "Whiskers",
-        heightInMM: 85,
-        fur: ['brown', 'white'],
-        gender: "male",
-        dateOfBirth: "May 24"
-    },
-    {
-        name: "Pax",
-        heightInMM: 80,
-        fur: ['black', 'white'],
-        gender: "male",
-        dateOfBirth: "April 1"
-    }
-];
 
-console.log(singleFurColor(hamsters));
+// 11. May 17 // Write a function that takes in an array of objects and returns the object with the most colors in the fur array.
+//
+ function mostColorful(arr) {
+     let colors =  0;
+     let mostColorfulObj = null
+     for (let i =0; i < arr.lenght; i++) {
+         if (arr[i].fur.lenghth > colors) {
+             mostColorfulObj = arr[i];
+             colors = arr[i.fur.length];
+         }
+     }
+     return mostColorfulObj;
+ }
+ console.log(mostColorful(hamsters)); returns; { name: "Snoozer", heightInMM; 85, fur['brown', 'white', 'pink']; "male"; dateOfBirth: "January 14"};
 
-function oneFunColor(arr){
-    lat newArr =[]
-    arr.forEach{functional(elem)
-    if(elem.fur.lenght === 1){
-    }
-    }
-}
