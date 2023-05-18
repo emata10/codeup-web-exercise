@@ -14,6 +14,8 @@
 	<li data-dbid="4">Item 4</li>
 	<li data-dbid="5">Item 5</li>
 </ul>
+
+
 <h2 id="sub-header">Hello Again.</h2>
 <p class="sub-paragraph">
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -25,51 +27,65 @@
 	culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<button id="btn-one">one</button>
+<button id="btn-two">Two</button>
+<button id=btn-three">Three</button>
+<button id="btn-four">Four</button>
+
+
 <script>
-	(function () {
+	(function() {
 		"use strict";
 		// TODO: Uncomment next line and get the main header element by id
+		
 		var mainHeader = document.getElementById('main-header');
 		
 		// TODO: Set inner html of mainHeader to "JavaScript is Cool"
-		mainHeader.innerHTML = "JavaScript is Cool";
+		var newThing = function () {
+			mainHeader.innerHTML = "JavaScript is Cool";
+		}
 		
 		// TODO: Uncomment the next line and get the sub header element by id
-		var subHeader = document.getElementById('sub-header');
+		var subHeader = function () {
+			document.getElementById("sub-header").style.color = "blue"
+		}
 		
 		// TODO: Set the text color of subHeader to blue
-		subHeader.style.color = "blue";
+		// 	subHeader.style.color = "blue";
 		
 		// TODO: Uncomment the next line and get all list items
+		
 		var listItems = document.querySelectorAll("li");
 		
 		// TODO: Set text color on every other list item to grey
+		// TODO: Set text color of li with dbid = 1 to blue
+		
 		for (var i = 0; i < listItems.length; i++) {
-			if (i % 2 !== 0) {
-				listItems[i].style.color = "grey"
+			if (listItems[i].getAttribute("data-dbid") == 1) {
+				
+				listItems[i].style.color = "blue";
+			} else if (i % 2 == 0) {
+				listItems[i].style.color = "grey";
 			}
 		}
-		// TODO: Set text color of li with dbid = 1 to blue
-		for(var j =0; j <listItems.length; j++) {
-			if (listItems[j].getAttribute("data-dbid") == 1)
-				listItems[j].setAttribute("class"),
-						listItems[j].getAttribute("class") + ("blue"));
-		}
-	
 		
 		// TODO: Uncomment the next line and get all elements with class name sub-paragraph
 		var subParagraphs = document.getElementsByClassName("sub-paragraph");
 		
 		// TODO: Change the text in the first sub-header to "Mission Accomplished!"
+		subParagraphs[0].innerHTML = "Mission Accomplished!";
+
+//			var newBtn = document.getElementsById("btn-one");
+//			console.log(newBtn);
+//
+// newBtn.addEventListener("click" , function (){ console.log("it worked");});
+		//or vvvv
 		
-		for(i = -1; i <subParagraphs.length; i++) {
-			if (subParagraphs[i] !== subParagraphs[0]) {
-				false;
-			} else {
-				subParagraphs[0].innerHTML = "Mission Accomplished!";
-			}
-		}
+		document.getElementById("btn-one").addEventListener("click", newThing);
+		
+		document.getElementById("btn-two").addEventListener("click", subHeader);
 	})();
+	
 </script>
 </body>
 </html>
