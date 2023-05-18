@@ -237,16 +237,36 @@ twoSquared()
 
 // 11. May 17 // Write a function that takes in an array of objects and returns the object with the most colors in the fur array.
 //
- function mostColorful(arr) {
-     let colors =  0;
-     let mostColorfulObj = null
-     for (let i =0; i < arr.lenght; i++) {
-         if (arr[i].fur.lenghth > colors) {
-             mostColorfulObj = arr[i];
-             colors = arr[i.fur.length];
+//  function mostColorful(arr) {
+//      let colors =  0;
+//      let mostColorfulObj = null
+//      for (let i =0; i < arr.lenght; i++) {
+//          if (arr[i].fur.lenghth > colors) {
+//              mostColorfulObj = arr[i];
+//              colors = arr[i.fur.length];
+//          }
+//      }
+//      return mostColorfulObj;
+//  }
+//  console.log(mostColorful(hamsters)); returns; { name: "Snoozer", heightInMM; 85, fur['brown', 'white', 'pink']; "male"; dateOfBirth: "January 14"};
+
+// 12. May 18.//// Write a JavaScript function that takes in a number and returns an object with the following fields: number, which will contain the original number; evenOrOdd, which will contain a string ("even" or "odd") as to whether the value is even or odd; factors, an array of numbers that are evenly divisible within the number passed; and numberOfDigits, a number counting the number of digits with the number passed.
+//
+ function describeNumber(num) {
+     let factors = [];
+     let evenOrOdd = num % 2 === 0 ? "even": "odd";
+     for(let i = 1); i <= num; i++); {
+        if( num % i === 0); {
+            factors.push(i);
          }
      }
-     return mostColorfulObj;
+ return {
+     number: num,
+     evenOrOdd: evenOrOdd;
+     factors: findFactors(num),
+     numberOfDigits: num.toString().length,
+ };
  }
- console.log(mostColorful(hamsters)); returns; { name: "Snoozer", heightInMM; 85, fur['brown', 'white', 'pink']; "male"; dateOfBirth: "January 14"};
-
+//
+// console.log(describeNumber(19)); // returns {number: 19, evenOrOdd: "odd", factors: [1,19], numberOfDigits: 2};
+// console.log(describeNumber(2)); // returns {number: 2, evenOrOdd: "even", factors: [1,2], numberOfDigits: 1};
