@@ -251,22 +251,37 @@ twoSquared()
 //  console.log(mostColorful(hamsters)); returns; { name: "Snoozer", heightInMM; 85, fur['brown', 'white', 'pink']; "male"; dateOfBirth: "January 14"};
 
 // 12. May 18.//// Write a JavaScript function that takes in a number and returns an object with the following fields: number, which will contain the original number; evenOrOdd, which will contain a string ("even" or "odd") as to whether the value is even or odd; factors, an array of numbers that are evenly divisible within the number passed; and numberOfDigits, a number counting the number of digits with the number passed.
-//
- function describeNumber(num) {
-     let factors = [];
-     let evenOrOdd = num % 2 === 0 ? "even": "odd";
-     for(let i = 1); i <= num; i++); {
-        if( num % i === 0); {
-            factors.push(i);
-         }
-     }
- return {
-     number: num,
-     evenOrOdd: evenOrOdd;
-     factors: findFactors(num),
-     numberOfDigits: num.toString().length,
- };
- }
-//
+// //
+//  function describeNumber(num) {
+//      let factors = [];
+//      let evenOrOdd = num % 2 === 0 ? "even": "odd";
+//      for(let i = 1); i <= num; i++); {
+//         if( num % i === 0); {
+//             factors.push(i);
+//          }
+//      }
+//  return {
+//      number: num,
+//      evenOrOdd: evenOrOdd;
+//      factors: findFactors(num),
+//      numberOfDigits: num.toString().length,
+//  };
+//  }
+// //
 // console.log(describeNumber(19)); // returns {number: 19, evenOrOdd: "odd", factors: [1,19], numberOfDigits: 2};
 // console.log(describeNumber(2)); // returns {number: 2, evenOrOdd: "even", factors: [1,2], numberOfDigits: 1};
+
+//13. May 19  // Write a JavaScript function that takes in an array of numbers and returns an array of the same length where all of the numbers have been replaced with the number multiplied by 3.
+//
+ function multiplyElementsByThree(arr) {
+     const bucket = [];
+        arr.forEach(function (el))
+       bucket.push(el * 3);
+     }
+     return bucket;
+ }
+//
+// console.log(multiplyElementsByThree([3,4,5])); // returns [9, 12, 15];
+// console.log(multiplyElementsByThree([12,8])); // returns [36, 24];
+// console.log(multiplyElementsByThree([100])); // returns [300];
+// console.log(multiplyElementsByThree([15, 9, 33, 16, 50])); // returns [45, 27, 99, 48, 150];
