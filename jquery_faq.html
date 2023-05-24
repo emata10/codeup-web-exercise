@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FAQ about national parks</title>
+	<style>
+		.invisible {
+			visibility: hidden;
+		}
+		
+		.highlight {
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<h1>FAQ about national parks</h1>
+<dl>
+	<dt>Q1: What national park is the biggest?</dt>
+	<dd class="invisible">A: The biggest national park in the United States is Wrangell-St. Elias National Park and Preserve in Alaska.</dd>
+	<dt>Q2: What is the oldest national park?</dt>
+	<dd class="invisible">A: The oldest national park is Yellowstone National Park, established in 1872.</dd>
+	<dt>Q3: What is the hottest national park?</dt>
+	<dd class="invisible">A: The hottest national park is Death Valley National Park in California, USA.</dd>
+	<dt>Q4: What national park has the deepest lake?</dt>
+	<dd class="invisible">A: Crater Lake National Park in Oregon, USA has the deepest lake in the United States.</dd>
+	<dt>Q5: What is the smallest national park?</dt>
+	<dd class="invisible">A: Hot Springs National Park in Arkansas, USA is the smallest national park by area.</dd>
+	<dt>Q6: Can I bring my pet to a national park?</dt>
+	<dd class="invisible">A: It depends on the national park. Some parks allow pets, while others do not. You should always check the park's website before visiting.</dd>
+	<dt>Q7: Which national park has the highest peak?</dt>
+	<dd class="invisible">A: Denali National Park in Alaska, USA has the highest peak in North America, Mount McKinley.</dd>
+	<dt>Q8: What is the most-visited national park?</dt>
+	<dd class="invisible">A: The Great Smoky Mountains National Park is the most-visited national park in the United States.</dd>
+	<dt>Q9: What national park has the most geysers?</dt>
+	<dd class="invisible">A: Yellowstone National Park has more than 500 active geysers, which is more than half of all the world's geysers.</dd>
+	<dt>Q10: Can I fly a drone in a national park?</dt>
+	<dd class="invisible">A: It depends on the national park. Some parks allow drones, while others do not. You should always check the park's website before visiting.</dd>
+</dl>
+<a href="#" id="toggle">Show/Hide Answers</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#toggle").click(function() {
+			$("dd").toggleClass("invisible");
+		});
+		
+		$("dt").click(function () {
+			$(this).toggleClass("highlight");
+		});
+	});
+</script>
+</body>
+</html>
