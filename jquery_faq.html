@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>FAQ about national parks</title>
+	<title>National Parks FAQ</title>
 	<style>
 		.invisible {
 			visibility: hidden;
 		}
-		
-		.highlight {
-			background-color: yellow;
-		}
 	</style>
 </head>
-<body>
 <h1>FAQ about national parks</h1>
 <dl>
 	<dt>Q1: What national park is the biggest?</dt>
@@ -28,27 +23,73 @@
 	<dt>Q6: Can I bring my pet to a national park?</dt>
 	<dd class="invisible">A: It depends on the national park. Some parks allow pets, while others do not. You should always check the park's website before visiting.</dd>
 	<dt>Q7: Which national park has the highest peak?</dt>
-	<dd class="invisible">A: Denali National Park in Alaska, USA has the highest peak in North America, Mount McKinley.</dd>
+	<dd class="invisible">A: Denali National Park in Alaska, USA has the highest peak in North America, Mount McKinvey.</dd>
 	<dt>Q8: What is the most-visited national park?</dt>
-	<dd class="invisible">A: The Great Smoky Mountains National Park is the most-visited national park in the United States.</dd>
+	<dd class="invisible">A: The Great Smoky Mountains National Park is the most-visited national park in
+		the United States.</dd>
 	<dt>Q9: What national park has the most geysers?</dt>
 	<dd class="invisible">A: Yellowstone National Park has more than 500 active geysers, which is more than half of all the world's geysers.</dd>
 	<dt>Q10: Can I fly a drone in a national park?</dt>
 	<dd class="invisible">A: It depends on the national park. Some parks allow drones, while others do not. You should always check the park's website before visiting.</dd>
 </dl>
-<a href="#" id="toggle">Show/Hide Answers</a>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$("#toggle").click(function() {
-			$("dd").toggleClass("invisible");
-		});
-		
-		$("dt").click(function () {
-			$(this).toggleClass("highlight");
-		});
-	});
-</script>
-</body>
+<a href="#" id="toggle-link">Toggle answers</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<br><br>
+<hr>
+<br>
+<h2>National Parks</h2>
+
+<ul>
+	<li>
+		<h3>Yellowstone National Park</h3>
+		<ul>
+			<li>Established in 1872</li>
+			<li>Covers over 2 million acres</li>
+			<li>Home to more than 10,000 thermal features</li>
+			<li>Contains the largest concentration of mammals in the lower 48 states</li>
+		</ul>
+	</li>
+	<li>
+	<h3>Yosemite National Park</h3>
+	<ul>
+		<li>Established in 1890</li>
+		<li>Covers over 760,000 acres</li>
+		<li>Contains more than 3,000 lakes and ponds</li>
+		<li>Features the tallest waterfall in North America</li>
+	</ul>
+	</li>
+	<li>
+	<h3>Grand Canyon National Park</h3>
+		<ul>
+			<li>Established in 1919</li>
+			<li>Covers over 1.2 million acres</li>
+			<li>Features a 277-mile long canyon</li>
+			<li>Contains over 1,500 plant, 355 bird, 89 mammal, and 47 reptile
+	</ul>
+	</li>
+</ul>
+<br><br>
+<hr>
+<title>Picture Frame Swaps</title>
+	<body>
+	
+	<div>
+		<div class="frame" id="leftFrame">
+			<img src="img/%20Three.jpeg" alt="Monsters">
+			<button class="changeImage">Change Image</button>
+		</div>
+		<div class="frame" id="centerFrame">
+			<img src="img/Boo.jpeg" alt="Boo">
+			<button class="changeImage">Change Image</button>
+		</div>
+		<div class="frame" id="rightFrame">
+			<img src="img/Mike & Boo.jpeg" alt="Boo sad">
+			<button class="changeImage">Change Image</button>
+		</div>
+	</div>
+	
+	</body>
 </html>
+	
