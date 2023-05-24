@@ -124,19 +124,17 @@
 		
 		/**
 		 * Bonus:
-		 * - Create a function named `createBook` that accepts a title and author
+		 * - Create a function named: "createBook" that accepts a title and author
 		 *   name and returns a book object with the properties described
 		 *   previously. Refactor your code that creates the books array to instead
 		 *   use your function.
-		 * - Create a function named `showBookInfo` that accepts a book object and
+		 * - Create a function named "showBookInfo" that accepts a book object and
 		 *   outputs the information described above. Refactor your loop to use your
-		 *   `
+		 * `,
 
         function showBookInfo(strings) {
 
-        }
-
-        showBookInfo` function.
+            showBookInfo` function.
 		
 		function createBook(title, firstName, lastName) {
 			let bookObject = {
@@ -158,4 +156,4 @@
 		
 		books.forEach(function (book, index) {
 			console.log("Book # " + (index + 1) + "\n" + showBookInfo(book))
-		}
+		`}
