@@ -1,3 +1,35 @@
+:root {
+    --main-bg: #E6ECF0;
+    --link-color: #3B94D9;
+    --main-link-color: #848487;
+    --light-bg: #FFF;
+    --separator-color: #DDD;
+    --subdued-color:#555;
+    font:16px Eczar;
+}
+
+body{
+    box-sizing:border-box;
+    background-color:#eee;
+    color:#222;
+    margin:0;
+}
+main{
+    text-align:center;
+}
+.postFooter{
+    float:left;
+}
+.categoryTag:hover{
+    cursor:pointer;
+    color:orangered !important;
+    text-decoration: underline !important;
+}
+.created_at, .categoryTag{
+    display:inline-block;
+    font-size:0.75em;
+    color:var(--subdued-color);
+}
 .card-header{
     cursor:pointer;
 }
@@ -53,15 +85,11 @@
 }
 #search{
     position:fixed;
-    top:1em;
-    right:1em;
     top:1.5em;
     right:1.5em;
     width:14%;
     float:right;
-    background-color:red;
 }
-
 #searchclear:hover {
     transform:scale(1.2);
     color: #c22;
