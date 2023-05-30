@@ -11,8 +11,8 @@
 	<style>
 		#map {
 			/* the width and height may be set to any size */
-			width: 100%;
-			height: 700px;
+			width: 400px;
+			height: 100%;
 		}
 	</style>
 </head>
@@ -28,23 +28,122 @@
 <!-- Mapbox Geocoder Util Methods -->
 <script src="js/mapbox-geocoder-utils.js"></script>
 
-<!--Custom JS-->
 	<script>
-		mapboxgl.accessToken = myMapBoxKey;
+		mapboxgl.accessToken = myMapBoxKey
 		var map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/streets-v9',
-		zoom: 10,
-		center: [-98.4916, 29.4252]
-	});
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v9',
+			zoom: 13,
+	       center: [-106.485022, 31.761877],
+		})
+	// 	mapboxgl.accessToken = myMapBoxKey;
+	// 	var map = new mapboxgl.Map({
+	// 	container: 'map',
+	// 	style: 'mapbox://styles/mapbox/streets-v9',
+	// 	zoom: 12,
+	// 	center: [-105.9372, 35.6869]
+	// });
+		//call the function to place the marker and popup
+		// placeMarkerAndPopup(
+		// 		{
+		// 			address: '7 W Gutierrez, Santa Fe, NM 87506',
+		// 			popupHTML: '<h3>Sopaipilla Factory Restaurant</h3><p>Awesome Sopaipillas.</p>'
+		// 		},
+		// 		'myMapBoxKey',
+		// 		map
+		// );
+			var cafePopup = new mapboxgl.Popup()
+		         .setHTML("<p>L & J Cafe</p>")
+		         .addTo(map);
+		    
+		     var cafeMarker = new mapboxgl.Marker()
+		         .setLngLat([-106.452580, 31.765310])
+		         .setPopup(cafePopup)
+		         .addTo(map);
 		
-		// the  geocode method from mapbox-geocoder-utils.js
-		geocode("600 Navarro St #350, San Antonio, TX 78205", myMapBoxKey).then(function(result) {
-		console.log(result);
-		map.setCenter(result);
-		map.setZoom(20);
-	});
-
+			var sunsetPopup = new mapboxgl.Popup()
+				.setHTML("<p>The Kitchen</p>")
+				.addTo(map);
+		
+			var sunsetMarker = new mapboxgl.Marker()
+				.setLngLat([-106.247230, 31.802200])
+				.setPopup(sunsetPopup)
+				.addTo(map);
+		
+			var centralPopup = new mapboxgl.Popup()
+				.setHTML("<p>Cafe Central</p>")
+				.addTo(map);
+		
+			var centralMarker = new mapboxgl.Marker()
+				.setLngLat([-106.491370, 31.757890])
+				.setPopup(centralPopup)
+				.addTo(map);
+			favRestList = [
+				{
+					name: "L & J Cafe",
+					info: "Great Place too Eat!",
+					location: [-106.452580, 31.765310]
+				},
+				{
+					name: "The Kitchen",
+					info: "Great customer service.",
+					location: [-106.247230, 31.802200]
+				},
+				{
+					name: "Cafe Central",
+					info: "The best place ever.",
+					location: [-106.491370, 31.757890]
+				}
+		
+			];
+			
+			favRestList.forEach(function (restaurant) {
+				var restaurantPopup = mapboxgl.Popup()
+						.setHTML(restaurant.name)
+				
+				var restaurantMarker = new mapboxgl.Marker()
+						.setLngLat(restaurant.location)
+						.setPopup(restaurantPopup)
+						.addTo(map);
+			})
+		
+		
+		// function placeMarkerAndPopup(info, token, map) {
+		// 	geocode("7 W Gutierrez, Santa Fe, NM 87506", myMapBoxKey).then(function (coordinates) {
+		// 		var popup = new mapboxgl.Popup()
+		// 				.setHTML(info.popupHTML);
+		// 		var marker = new mapboxgl.Marker()
+		// 				.setLngLat(coordinates)
+		// 				.addTo(map)
+		// 				.setPopup(popup)
+		// 		.popup.addTo(map);
+		// 	});
+			
+		
+			// Add markers and info windows for each restaurant
+		// 	restaurants.forEach((restaurant) => {
+		// 		const marker = new google.maps.Marker({
+		// 			position: {lat: restaurant.lat, lng: restaurant.lng},
+		// 			map,
+		// 			title: restaurant.name,
+		// 		});
+		//
+		// 		const infowindow = new google.maps.InfoWindow({
+		// 			content: restaurant.description,
+		// 		});
+		//
+		// 		marker.addListener("click", () => {
+		// 			infowindow.open({
+		// 				anchor: marker,
+		// 			});
+		// 		});
+		// 	});
+		// }
+		
+		
+		
+		
+		
 </script>
 </body>
 </html>
