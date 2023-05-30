@@ -33,8 +33,8 @@
 		var map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v9',
-			zoom: 13,
-	       center: [-106.485022, 31.761877],
+			zoom: 7,
+	       center: [-106.486040, 31.768980],
 		})
 	// 	mapboxgl.accessToken = myMapBoxKey;
 	// 	var map = new mapboxgl.Map({
@@ -52,33 +52,34 @@
 		// 		'myMapBoxKey',
 		// 		map
 		// );
-			var cafePopup = new mapboxgl.Popup()
-		         .setHTML("<p>L & J Cafe</p>")
-		         .addTo(map);
-		    
-		     var cafeMarker = new mapboxgl.Marker()
-		         .setLngLat([-106.452580, 31.765310])
-		         .setPopup(cafePopup)
-		         .addTo(map);
+		// 	var cafePopup = new mapboxgl.Popup()
+		//          .setHTML("<p>L & J Cafe</p>")
+		//          .addTo(map);
+		//
+		//      var cafeMarker = new mapboxgl.Marker()
+		//          .setLngLat([-106.452580, 31.765310])
+		//          .setPopup(cafePopup)
+		//          .addTo(map);
+		//
+		// 	var sunsetPopup = new mapboxgl.Popup()
+		// 		.setHTML("<p>The Kitchen</p>")
+		// 		.addTo(map);
+		//
+		// 	var sunsetMarker = new mapboxgl.Marker()
+		// 		.setLngLat([-106.247230, 31.802200])
+		// 		.setPopup(sunsetPopup)
+		// 		.addTo(map);
+		//
+		// 	var centralPopup = new mapboxgl.Popup()
+		// 		.setHTML("<p>Cafe Central</p>")
+		// 		.addTo(map);
 		
-			var sunsetPopup = new mapboxgl.Popup()
-				.setHTML("<p>The Kitchen</p>")
-				.addTo(map);
-		
-			var sunsetMarker = new mapboxgl.Marker()
-				.setLngLat([-106.247230, 31.802200])
-				.setPopup(sunsetPopup)
-				.addTo(map);
-		
-			var centralPopup = new mapboxgl.Popup()
-				.setHTML("<p>Cafe Central</p>")
-				.addTo(map);
-		
-			var centralMarker = new mapboxgl.Marker()
-				.setLngLat([-106.491370, 31.757890])
-				.setPopup(centralPopup)
-				.addTo(map);
-			favRestList = [
+			// var centralMarker = new mapboxgl.Marker()
+			// 	.setLngLat([-106.491370, 31.757890])
+			// 	.setPopup(centralPopup)
+			// 	.addTo(map);
+				
+			var favRestList = [
 				{
 					name: "L & J Cafe",
 					info: "Great Place too Eat!",
@@ -98,13 +99,14 @@
 			];
 			
 			favRestList.forEach(function (restaurant) {
-				var restaurantPopup = mapboxgl.Popup()
-						.setHTML(restaurant.name)
+			
 				
 				var restaurantMarker = new mapboxgl.Marker()
 						.setLngLat(restaurant.location)
-						.setPopup(restaurantPopup)
-						.addTo(map);
+						.setPopup(new mapboxgl.Popup()
+						.setHTML(`<h4>${restaurant.name}</h4><p>${restaurant.info}</p>`)
+						.addTo(map));
+				
 			})
 		
 		
