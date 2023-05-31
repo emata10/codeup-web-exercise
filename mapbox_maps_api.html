@@ -98,16 +98,18 @@
 		
 			];
 			
-			favRestList.forEach(function (restaurant) {
-			
+			favRestList.forEach(function (restaurant)
+			{
 				
-				var restaurantMarker = new mapboxgl.Marker()
+				
+				new mapboxgl.Marker()
 						.setLngLat(restaurant.location)
 						.setPopup(new mapboxgl.Popup()
-						.setHTML(`<h4>${restaurant.name}</h4><p>${restaurant.info}</p>`)
-						.addTo(map));
+								.setHTML(`<h4>${restaurant.name}</h4><p>${restaurant.info}</p>`)
+								.addTo(map));
 				
-			})
+			}
+)
 		
 		
 		// function placeMarkerAndPopup(info, token, map) {

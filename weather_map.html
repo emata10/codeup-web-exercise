@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WeatherMap</title>
+	<script src="js/keys.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/weather_map.css">
+</head>
+<body>
+<div id="weather-info">
+</div>
+<nav>
+	<form class="search-form">
+		<label>
+			<input type="text" placeholder="Enter city name">
+		</label>
+		<button type="submit">Search</button>
+	</form>
+</nav>
+
+<main>
+	<div class="current-weather">
+		<h1>Current Weather in El Paso, TX</h1>
+		<div class="temperature"></div>
+		<div class="description"></div>
+		<div class="icon"></div>
+	</div>
+	
+	<div class="forecast">
+		<h2>Five Day Forecast</h2>
+		<div class="day-1"></div>
+		<div class="day-2"></div>
+		<div class="day-3"></div>
+		<div class="day-4"></div>
+		<div class="day-5"></div>
+	</div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/weather_map.js"></script>
+
+</body>
+</html>
