@@ -1,0 +1,65 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin: 0 0.5rem;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container > div {
+    display: flex;
+    align-items: center;
+}
+
+.search-container > div > span {
+    margin-right: 10px;
+}
+
+
+
+
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 16px;
+    text-align: center;
+    width: 300px;
+    display: none; /* hide card by default */
+}
+
+
+.card-img-top {
+    /* specify styles for the card image here */
+}
+
+.card-body {
+    /* specify styles for the card body here */
+}
+
+.card-text {
+    /* specify styles for the text in the card body here */
+}

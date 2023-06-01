@@ -1,139 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Weather Map</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="js/keys.js"></script>
+	<title>WeatherMap</title>
 </head>
 <body>
-<h1>Weather Forecast</h1>
-<!-- Navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<form class="form-inline my-2 my-lg-0 ml-auto">
-			<input class="form-control mr-sm-2" type="search" placeholder="Enter city" aria-label="Search" id="search-input">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn">Search</button>
-		</form>
-</nav>
-<!-- Current weather conditions -->
-<div id="current-weather">
-	<h2>Current Conditions</h2>
-	<div class="card-deck">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title" id="current-temp"></h5>
-				<p class="card-text" id="current-description"></p>
-			</div>
-			<img class="card-img-bottom" id="current-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<nav class="navbar navbar bg-primary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<div class="navbar-container"><a href="#" class="navbar-brand">Weather App</a>
+		</div>
+		<div class="navbar-item">
+			<span>Current city: El Paso</span>
 		</div>
 	</div>
+</nav>
+<br>
+<div class="search-container" role="search">
+  <div>
+	<span>Place</span>
+	<input class="Place" type="search" placeholder="El Paso, Texas" aria-label="Search">
+	<button class="btn btn-outline-success" type="submit">Find</button>
 </div>
-<!-- Five day forecast -->
-<div id="five-day-forecast">
-	<h2>Five Day Forecast</h2>
-	<div class="card-columns" id="forecast-cards">
-		<!-- Dynamically generated cards here -->
+
+
+<br><br>
+<div class="card" style="width: 18rem;">
+	<img src="..." class="card-img-top" alt="...">
+	<div class="card-body">
+		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 	</div>
 </div>
-<!-- Link to custom JS -->
-<script src="script.js"></script>
-
-<script>
-	let apiKey = "weatherMapKey";
-	const city = "El Paso";
-	
-	$(document).ready(function() {
-		// Get current conditions
-		$.ajax({
-			url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + weatherMapKey,
-			method: "GET",
-			success: function(response) {
-				// Update current weather conditions
-				$("#current-temp").text(Math.round(response.main.temp) + "°F");
-				$("#current-description").text(response.weather[0].description);
-				$("#current-icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-			}
-		});
+<div class="card" style="width: auto;">
+	<img src="..." class="card-img-top" alt="...">
+	<div class="card-body">
+		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	</div>
+</div>
+<div class="card" style="width: 12rem;">
+	<img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Clear sky">>
+	<div class="card-body">
+		<p class="card-text">Description: Clear Sky's.</p>
+		<p class="card-text">Humidity: Clear Sky's.</p>
+		<p class="card-text">Description: Clear Sky's.</p>
+		<p class="card-text">Description: Clear Sky's.</p>
 		
-		// Get five day forecast
-		$.ajax({
-			url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + weatherMapKey,
-			method: "GET",
-			success: function(response) {
-				// Get forecast data for each of the next five days
-				let forecasts = [];
-				for (let i = 0; i < response.list.length; i++) {
-					let currentForecast = response.list[i];
-					let forecastDate = new Date(currentForecast.dt_txt);
-					if (forecastDate.getHours() === 12) {
-						forecasts.push(currentForecast);
-					}
-				}
-				// Generate HTML table for five day forecast
-				let tableHTML = "<table><thead><tr><th>Date</th><th>Temperature</th><th>Description</th><th>Icon</th></tr></thead><tbody>";
-				for (let i = 0; i < forecasts.length; i++) {
-					let currentForecast = forecasts[i];
-					let forecastDate = new Date(currentForecast.dt_txt);
-					let forecastDateString = (forecastDate.getMonth() + 1) + "/" + forecastDate.getDate() + "/" + forecastDate.getFullYear();
-					tableHTML += "<tr><td>" + forecastDateString + "</td><td>" + Math.round(currentForecast.main.temp) + "°F</td><td>" + currentForecast.weather[0].description + "</td><td><img src='http://openweathermap.org/img/w/" + currentForecast.weather[0].icon + ".png'></td></tr>";
-				}
-				tableHTML += "</tbody></table>";
-				// Update HTML table with new data
-				$("#forecast-table").html(tableHTML);
-			}
-		});
-	});
-</script>
+	</div>
+</div>
+<div class="card" style="width: 18rem;">
+	<img src="..." class="card-img-top" alt="...">
+	<div class="card-body">
+		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	</div>
+</div>
+<div class="card" style="width: 18rem;">
+	<img src="..." class="card-img-top" alt="...">
+	<div class="card-body">
+		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	</div>
+</div>
+
+<div id="weather-info">
+</div>
+<script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+	
+
+	let latLong = [31.8001, -106.2005];
+	const weatherMapKey = "weatherMapKey";
+	$.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&units=imperial&appid=${weatherMapKey}`).done(function(data) {
+		console.log(data);
+		let todayDate = new Date(data.list[0].dt * 1000);
+		let month;
+		let day;
+		let dayOfWeek;
+		
+		switch (todayDate.getMonth()) {
+			case 0:
+				month = 'January';
+				break;
+			case 1:
+				month = 'February';
+				break;
+			case 2:
+				month = 'March';
+				break;
+			case 3:
+				month = 'April';
+				break;
+			case 4:
+				month = 'May';
+				break;
+			case 5:
+				month = 'June';
+				break;
+			case 6:
+				month = 'July';
+				break;
+			case 7:
+				month = 'August';
+				break;
+			case 8:
+				month = 'September';
+				break;
+			case 9:
+				month = 'October';
+				break;
+			case 10:
+				month = 'November';
+				break;
+			case 11:
+				month = 'December';
+				break;
+			default:
+				month = 'Smarch';
+				break;
+		}
+		
+		switch (todayDate.getDay()) {
+			case 0:
+				day = 'Sunday';
+				break;
+			case 1:
+				day = 'Monday';
+				break;
+			case 2:
+				day = 'Tuesday';
+				break;
+			case 3:
+				day = 'Wednesday';
+				break;
+			case 4:
+				day = 'Thursday';
+				break;
+			case 5:
+				day = 'Friday';
+				break;
+			case 6:
+				day = 'Saturday';
+				break;
+			default:
+				day = 'Stan\'s Day';
+				break;
+		}
+		
+		let weatherHTML = `<section><h1>${day}, ${month} ${todayDate.getDate()}</h1><p>${data.list[0].main.temp_max} / ${data.list[0].main.temp_min}</p></section>`;
+		
+		$("#weather-info").html(weatherHTML);
+	})
+		</script>
+</div>
 </body>
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--	<meta charset="UTF-8">-->
-<!--	<title>WeatherMap</title>-->
-<!--	<script src="js/keys.js"></script>-->
-<!--	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>-->
-<!--	<link rel="stylesheet" href="css/weather_map.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div id="weather-info">-->
-<!--</div>-->
-<!--<nav>   cv -->
-<!--	<form class="search-form">-->
-<!--		<label>-->
-<!--			<input type="text" placeholder="Enter city name">-->
-<!--		</label>-->
-<!--		<button type="submit">Search</button>-->
-<!--	</form>-->
-<!--</nav>-->
-
-<!--<main>-->
-<!--	<div class="current-weather">-->
-<!--		<h1>Current Weather in El Paso, TX</h1>-->
-<!--		<div class="temperature"></div>-->
-<!--		<div class="description"></div>-->
-<!--		<div class="icon"></div>-->
-<!--	</div>-->
-<!--	-->
-<!--	<div class="forecast">-->
-<!--		<h2>Five Day Forecast</h2>-->
-<!--		<div class="day-1"></div>-->
-<!--		<div class="day-2"></div>-->
-<!--		<div class="day-3"></div>-->
-<!--		<div class="day-4"></div>-->
-<!--		<div class="day-5"></div>-->
-<!--	</div>-->
-<!--</main>-->
-
-<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-<!--<script src="js/weather_map.js"></script>-->
-
-<!--</body>-->
-<!--</html>-->
