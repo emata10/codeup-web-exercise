@@ -1,65 +1,39 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
+/* style.css */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
     background-color: #333;
     color: #fff;
-}
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
+    padding: 10px;
 }
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
-}
-
-.nav-item {
-    margin: 0 0.5rem;
+nav {
+    /* Navbar styles */
 }
 
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-container > div {
-    display: flex;
-    align-items: center;
-}
-
-.search-container > div > span {
-    margin-right: 10px;
-}
-
-
-
-
-.card {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 16px;
+    margin-top: 10px;
     text-align: center;
-    width: 300px;
-    display: none; /* hide card by default */
 }
 
-
-.card-img-top {
-    /* specify styles for the card image here */
+#map {
+    height: 400px;
+    width: 100%;
 }
 
-.card-body {
-    /* specify styles for the card body here */
+#weather-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.card-text {
-    /* specify styles for the text in the card body here */
+.weather-card {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f1f1f1;
 }
