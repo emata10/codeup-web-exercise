@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather Map Project</title>
+	<link rel='stylesheet'
+		  href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css'
+		  type='text/css'/>
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet'/>
+	<link rel="stylesheet" href="css/weather.css">
+</head>
+<!-- As a heading -->
+<div id="head">
+	<h1 id="first">Weather</h1>
+	<h1 id="second">Check</h1>
+	<h5 id="local"></h5>
+</div>
+<div id="cards">
+	<div id="card"></div>
+	<div id="card2"></div>
+	<div id="card3"></div>
+	<div id="card4"></div>
+	<div id="card5"></div>
+</div>
+<form class="search-form">
+	<label for="search" class="screen-reader-text">Place</label>
+	<input id="search" type="search" name="search" class="search-input" placeholder="City, State, Zip code ">
+	<button type="submit" class="search-button">Search</button>
+</form>
+<div id='map'></div>
+<pre id='coordinates' class='coordinates'></pre>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script>
+	
+	// Get DOM elements
+	const input = document.getElementById('location-input');
+	const btn = document.getElementById('search-btn');
+	
+	
+	function $(document) {
+		
+
+	
+	$(document).ready(async function () {
+		"use strict";
+// Initialize map
+		mapboxgl.accessToken = myMapBoxKey;
+		const map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-106.39577, 31.79905],
+			zoom: 3
+		});
+		
+		// the  geocode method from mapbox-geocoder-utils.js
+		geocode("6701 Convair RD, El Paso, TX 79925", myMapBoxKey).then(function (result) {
+			console.log(result);
+			map.setCenter(result);
+			map.setZoom(20);
+		});
+
+// Add geocoder to DOM
+		document.getElementById('geocoder-container');
+
+// Initialize weather API url
+		let weatherApiUrl = '';
+
+// Function to get weather data from OpenWeatherMap API
+		const getWeather = async (url) => {
+			try {
+				const response = await fetch(url);
+				return await response.json();
+			} catch (error) {
+				console.log('Error:', error);
+			}
+		};
+		// Function to display weather data
+		const displayWeather = (data) => {
+			const temp = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);
+			document.getElementById('temp').textContent = ' ${temp}° F';
+			document.getElementById('desc').textContent = data.weather[0].description.toUpperCase();
+			document.getElementById('icon').setAttribute('src', 'https://openweathermap.org/img/w/${data.weather[0].icon}.png)');
+		};
+		// create a handler function
+		var listener = function (event) {
+			alert('You clicked the button!');
+		}
+
+// Add event listener to search button
+		btn.addEventListener('click', async () => {
+		});
+		// Get geocoder result
+		const result = await geocoder.query(input.value).send();
+		
+		// Check if geocoder returned a result
+		if (result && result.result && result.result.center) {
+			const lng = result.result.center[0];
+			const lat = result.result.center[1];
+			
+			// Update map center and zoom
+			map.flyTo({
+				center: [lng, lat],
+				zoom: 10
+			});
+			
+			// Update weather API url with latitude and longitude
+			weatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${weatherMapKey}';
+			
+			// Get weather data and display it
+			const weatherData = await getWeather(weatherApiUrl);
+			displayWeather(weatherData);
+		}
+	})
+		};
+	
+	// var marker = new mapboxgl.Marker({
+			draggable: let color;
+	true,
+			color:'#9E8F44FF'
+		
+			
+	
+	function onDragEnd() {
+			let lngLat = marker.getLngLat();
+			$('#card').html("");
+			genWeatherToday();
+			$('#card2').html("");
+			genWeatherTomorrow();
+			$('#card3').html("");
+			genWeatherDayAfterTomorrow();
+		}
+		
+		marker.on('dragend', onDragEnd);
+		let monthNames = ["January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+		];
+		let d = new Date();
+		let month = monthNames[d.getMonth()];
+		let day = d.getDate();
+		let tomorrowSet = d.getDate() + 1;
+		let dayAfterTomorrowSet = d.getDate() + 2;
+		let dayAfterSet = d.getDate() + 3;
+		let dayAfter2Set = d.getDate() + 4;
+		let lastDaySet = d.getDate() + 5;
+		let today = (month < 10 ? '0' : '') + month + ' ' + (day < 10 ? '0' : '') + day + ', ' + d.getFullYear();
+		let tomorrow = (month < 10 ? '0' : '') + month + ' ' + (tomorrowSet < 10 ? '0' : '') + tomorrowSet + ', ' + d.getFullYear();
+		let dayAfterTomorrow = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
+		let dayAfter = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
+		let dayAfter2 = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
+		let lastDay = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
+		
+		
+});
+	$(".search-button").click(function () {
+		var input = $("#search").val();
+		geocode(input, mapboxToken).then(function (result) {
+			console.log(result);
+			map.setCenter(result);
+			map.setZoom(12);
+			marker.setLngLat(result);
+			$('#card').html("");
+			genWeatherToday();
+			$('#card2').html("");
+			genWeatherTomorrow();
+			$('#card3').html("");
+			genWeatherTomorrow();
+			$('#card4').html("");
+			genWeatherTomorrow();
+			$('#card5').html("");
+			genWeatherDayAfterTomorrow();
+
+		});
+	});
+	function genWeatherToday() {
+
+		marker.on('dragend', onDragEnd);
+		$('#card').html("");
+		var lngLat = marker.getLngLat();
+		var cord = "/" + lngLat.lat + "," + lngLat.lng;
+		var weather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + cord);
+		var locale = reverseGeocode({lat: lngLat.lat, lng: lngLat.lng}, mapboxToken).then(function(result){
+			$("#local").html(result);
+		});
+		weather.done(function (data) {
+			console.log(data);
+			var content = "<h6>";
+			content += today;
+			content += "</h6>";
+			content += "<h3 class='temp'>";
+			content += Math.round(data.currently.temperature) + "°F";
+			content += "</h3>";
+			content += "<img class='icon1'>";
+			content += "<h6 class='summary'>";
+			content += "Summary: " + data.currently.summary;
+			content += "</h6>";
+			content += "<h5 class='rainChance'>";
+			content += "Chance of rain: " + data.currently.precipProbability * 100 + "%";
+			content += "</h5>";
+			content += "<h5 class='humidity'>";
+			content += "Humidity: " + Math.round(data.currently.humidity * 100) + "%";
+			content += "</h5>";
+			content += "<h5 class='windSpeed'>";
+			content += "Wind Speed: " + Math.round(data.currently.windSpeed) + " MPH";
+			content += "</h5>";
+			$('#card').append(content);
+			var icons = [
+				{
+					summary: "clear-day",
+					image: 'icons/clearDay.png'
+				},
+				{
+					summary: "clear-night",
+					image: 'icons/clearNight.png'
+				},
+				{
+					summary: "rain",
+					image: 'icons/rain.png'
+				},
+				{
+					summary: "snow",
+					image: 'icons/snow.png'
+				},
+				{
+					summary: "sleet",
+					image: 'icons/sleet.png'
+				},
+				{
+					summary: "wind",
+					image: 'icons/wind.png'
+				},
+				{
+					summary: "fog",
+					image: 'icons/fog.png'
+				},
+				{
+					summary: "cloudy",
+					image: 'icons/cloudy.png'
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: 'icons/partlyCloudyDay.png'
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: 'icons/partlyCloudyNight.png'
+				},
+
+			];
+			var backgrounds = [
+				{
+					summary: "clear-day",
+					image: "url('icons/clearDay.gif')"
+				},
+				{
+					summary: "clear-night",
+					image: "url('icons/clearNight.gif')"
+				},
+				{
+					summary: "rain",
+					image: "url('icons/rain.gif')"
+				},
+				{
+					summary: "snow",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "sleet",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "wind",
+					image: "url('icons/wind.gif')"
+				},
+				{
+					summary: "fog",
+					image: "url('icons/fog.gif')"
+				},
+				{
+					summary: "cloudy",
+					image: "url('icons/cloudy.gif')"
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: "url('icons/partlyCloudyDay.gif')"
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: "url('icons/partlyCloudyNight.gif')"
+				},
+
+			];
+			icons.forEach(function (type) {
+				if (data.currently.icon === type.summary) {
+					$('.icon1').attr('src', type.image);
+				}
+			});
+			backgrounds.forEach(function (type) {
+				if (data.currently.icon === type.summary) {
+					$('#card').css('background-image', type.image);
+				}
+			});
+		});
+		weather.fail(function () {
+			console.log("try again")
+		})
+	}
+
+
+	function genWeatherTomorrow() {
+		marker.on('dragend', onDragEnd);
+		$('#card').html("");
+		var lngLat = marker.getLngLat();
+		var cord = "/" + lngLat.lat + "," + lngLat.lng;
+		var tomWeather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + cord);
+		tomWeather.done(function (data) {
+			var content = "<h6>";
+			content += tomorrow;
+			content += "</h6>";
+			content += "<h3 class='temp'>";
+			content += Math.round(data.daily.data[1].temperatureMax) + "°F" + "/" + Math.round(data.daily.data[1].temperatureMin) + "°F";
+			content += "</h3>";
+			content += "<img class='icon2'>";
+			content += "<h6 class='summary'>";
+			content += "Summary: " + data.daily.data[1].summary;
+			content += "</h6>";
+			content += "<h5 class='rainChance'>";
+			content += "Chance of rain: " + data.daily.data[1].precipProbability *100 + "%";
+			content += "</h5>";
+			content += "<h5 class='humidity'>";
+			content += "Humidity: " + Math.round(data.daily.data[1].humidity * 100) + "%";
+			content += "</h5>";
+			content += "<h5 class='windSpeed'>";
+			content += "Wind Speed: " + Math.round(data.daily.data[1].windSpeed) + " MPH";
+			content += "</h5>";
+
+
+			$('#card2').append(content);
+			var icons = [
+				{
+					summary: "clear-day",
+					image: 'icons/clearDay.png'
+				},
+				{
+					summary: "clear-night",
+					image: 'icons/clearNight.png'
+				},
+				{
+					summary: "rain",
+					image: 'icons/rain.png'
+				},
+				{
+					summary: "snow",
+					image: 'icons/snow.png'
+				},
+				{
+					summary: "sleet",
+					image: 'icons/sleet.png'
+				},
+				{
+					summary: "wind",
+					image: 'icons/wind.png'
+				},
+				{
+					summary: "fog",
+					image: 'icons/fog.png'
+				},
+				{
+					summary: "cloudy",
+					image: 'icons/cloudy.png'
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: 'icons/partlyCloudyDay.png'
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: 'icons/partlyCloudyNight.png'
+				},
+			]
+			let backgrounds = [
+				{
+					summary: "clear-day",
+					image: "url('icons/clearDay.gif')"
+				},
+				{
+					summary: "clear-night",
+					image: "url('icons/clearNight.gif')"
+				},
+				{
+					summary: "rain",
+					image: "url('icons/rain.gif')"
+				},
+				{
+					summary: "snow",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "sleet",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "wind",
+					image: "url('icons/wind.gif')"
+				},
+				{
+					summary: "fog",
+					image: "url('icons/fog.gif')"
+				},
+				{
+					summary: "cloudy",
+					image: "url('icons/cloudy.gif')"
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: "url('icons/partlyCloudyDay.gif')"
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: "url('icons/partlyCloudyNight.gif')"
+				},
+
+			];
+			icons.forEach(function (type) {
+				if (data.daily.data[1].icon === type.summary) {
+					$('.icon2').attr('src', type.image);
+				}
+			});
+			backgrounds.forEach(function (type) {
+				if (data.daily.data[1].icon === type.summary) {
+					$('#card2').css('background-image', type.image);
+				}
+			});
+		});
+		tomWeather.fail(function () {
+			console.log("try again")
+		})
+	}
+
+
+	function genWeatherDayAfterTomorrow() {
+		marker.on('dragend', onDragEnd);
+		var lngLat = marker.getLngLat();
+		var cord = "/" + lngLat.lat + "," + lngLat.lng;
+		var aftTomWeather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + cord);
+		aftTomWeather.done(function (data) {
+			var content = "<h5>";
+			content += dayAfterTomorrow;
+			content += "</h5>";
+			content += "<h3 class='temp'>";
+			content += Math.round(data.daily.data[2].temperatureMax) + "°F" + "/" + Math.round(data.daily.data[2].temperatureMin) + "°F";
+			content += "</h3>";
+			content += "<img class='icon3'>";
+			content += "<h6 class='summary'>";
+			content += "Summary: " + data.daily.data[2].summary;
+			content += "</h6>";
+			content += "<h5 class='rainChance'>";
+			content += "Chance of rain: " + data.daily.data[2].precipProbability * 100 + "%";
+			content += "</h5>";
+			content += "<h5 class='humidity'>";
+			content += "Humidity: " + Math.round(data.daily.data[2].humidity * 100) + "%";
+			content += "</h5>";
+			content += "<h5 class='windSpeed'>";
+			content += "Wind Speed: " + Math.round(data.daily.data[2].windSpeed) + " MPH";
+			content += "</h5>";
+
+
+			$('#card3').append(content);
+			var icons = [
+				{
+					summary: "clear-day",
+					image: 'icons/clearDay.png'
+				},
+				{
+					summary: "clear-night",
+					image: 'icons/clearNight.png'
+				},
+				{
+					summary: "rain",
+					image: 'icons/rain.png'
+				},
+				{
+					summary: "snow",
+					image: 'icons/snow.png'
+				},
+				{
+					summary: "sleet",
+					image: 'icons/sleet.png'
+				},
+				{
+					summary: "wind",
+					image: 'icons/wind.png'
+				},
+				{
+					summary: "fog",
+					image: 'icons/fog.png'
+				},
+				{
+					summary: "cloudy",
+					image: 'icons/cloudy.png'
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: 'icons/partlyCloudyDay.png'
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: 'icons/partlyCloudyNight.png'
+				},
+
+			];
+			var backgrounds = [
+				{
+					summary: "clear-day",
+					image: "url('icons/clearDay.gif')"
+				},
+				{
+					summary: "clear-night",
+					image: "url('icons/clearNight.gif')"
+				},
+				{
+					summary: "rain",
+					image: "url('icons/rain.gif')"
+				},
+				{
+					summary: "snow",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "sleet",
+					image: "url('icons/snow.gif')"
+				},
+				{
+					summary: "wind",
+					image: "url('icons/wind.gif')"
+				},
+				{
+					summary: "fog",
+					image: "url('icons/fog.gif')"
+				},
+				{
+					summary: "cloudy",
+					image: "url('icons/cloudy.gif')"
+				},
+				{
+					summary: "partly-cloudy-day",
+					image: "url('icons/partlyCloudyDay.gif')"
+				},
+				{
+					summary: "partly-cloudy-night",
+					image: "url('icons/partlyCloudyNight.gif')"
+				},
+
+			];
+			icons.forEach(function (type) {
+				if (data.daily.data[2].icon === type.summary) {
+					$('.icon3').attr('src', type.image);
+				}
+			});
+			backgrounds.forEach(function (type) {
+				if (data.daily.data[2].icon === type.summary) {
+					$('#card3').css('background-image', type.image);
+				}
+			});
+		});
+		aftTomWeather.fail(function () {
+			console.log("try again")
+		})
+	}
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
