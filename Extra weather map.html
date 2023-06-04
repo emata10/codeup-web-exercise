@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Weather Forecast App</title>
+	<link rel="stylesheet" type="text/css" href="css/weather.css">
+</head>
+<body>
+<div id="weather-info">
+</div>
+<div class="top-banner">
+	<div class="container">
+		<h1 class="heading">Weather App</h1>
+		<form>
+			<input input="text" placeholder="City, State, Zip Code" autofocus>
+			<button type="submit">Find</button>
+			<span class="msg"></span>
+		</form>
+	</div>
+	<section class="ajax-section">
+		<div class="container">
+			<ul class="cities"></ul>
+		</div>
+	</section>
+<div class="wrapper">
+	<h1>Current Conditions for [El Paso]</h1>
+	<div class="current-conditions">
+		<p><strong>Temperature:</strong>[temperature]°F</p>
+		<p><strong>Weather Conditions:</strong> [description]</p>
+		<p><strong>Humidity:</strong> [humidity]%</p>
+	</div>
+	<h2>Five Day Forecast</h2>
+	<div class="forecast">
+		<div class="day-1">
+			<p class="date">[date]</p>
+			<img class="icon" src="img/Sunny.png" alt="Sun">
+			<p class="temp">[temperature]°F</p>
+		</div>
+		<div class="day-2">
+			<p class="date">[date]</p>
+			<img class="icon" src="img/rain.png">
+			<p class="temp">[temperature]°F</p>
+		</div>
+		<div class="day-3">
+			<p class="date">[date]</p>
+			<img class="icon" src="img/clouds.jpeg">
+			<p class="temp">[temperature]°F</p>
+		</div>
+		<div class="day-4">
+			<p class="date">[date]</p>
+			<img class="icon" src="img/rain.png">
+			<p class="temp">[temperature]°F</p>
+		</div>
+		<div class="day-5">
+			<p class="date">[date]</p>
+			<img class="icon" src="img/Sunny.png">
+			<p class="temp">[temperature]°F</p>
+		</div>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/extra.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+	<script>
+		
+		// Add the map container to the HTML
+		
+		<div id='map' style='width: 400px; height: 300px;'></div>
+		
+		<!-- Mapbox JS -->
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	
+	<!-- Mapbox Geocoder Util Methods -->
+	<script src="js/mapbox-geocoder-utils.js"></script>
+	
+	<script>
+		
+		<!-- Add the Mapbox library and stylesheet -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+	
+	<script>
+	
+		// Set the Mapbox access token
+		mapboxgl.accessToken = 'yourMapboxAccessToken';
+		
+		// Create a new map object and set its properties
+		const map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-106.39577, 31.79905],
+			zoom: 7
+		});
+		
+		// Use the geocode method from mapbox-geocoder-utils.js to get the coordinates of a location
+		geocode("6701 Convair RD, El Paso, TX 79925", 'weatherMapKey').then(function (result) {
+			console.log(result);
+			map.setCenter(result);
+			map.setZoom(20);
+		});
+		
+		// Get the weather forecast for a given latitude and longitude using OpenWeatherMap API
+		let latLong = [31.772543, -106.460953];
+		$.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${latLong[0]}&lon=${latLong[1]}&units=imperial&appid=weatherMapKey`).done(function (data) {
+			console.log(data);
+			// Get the date for the first forecast item
+			let todayDate = new Date(data.list[0].dt * 1000);
+			let month;
+			let day;
+			
+			// Convert the month from number to string format
+			switch (todayDate.getMonth()) {
+				case 0:
+					month = 'January';
+					break;
+				case 1:
+					month = 'February';
+					break;
+				case 2:
+					month = 'March';
+					break;
+				case 3:
+					month = 'April';
+					break;
+				case 4:
+					month = 'May';
+					break;
+				case 5:
+					month = 'June';
+					break;
+				case 6:
+					month = 'July';
+					break;
+				case 7:
+					month = 'August';
+					break;
+				case 8:
+					month = 'September';
+					break;
+				case 9:
+					month = 'October';
+					break;
+				case 10:
+					month = 'November';
+					break;
+				case 11:
+					month = 'December';
+					break;
+				default:
+					month = '';
+			}
+			
+			// Get the day of the week for the first forecast item
+			switch (todayDate.getDay()) {
+				case 0:
+					day = 'Sunday';
+					break;
+				case 1:
+					day = 'Monday';
+					break;
+				case 2:
+					day = 'Tuesday';
+					break;
+				case 3:
+					day = 'Wednesday';
+					break;
+				case 4:
+					day = 'Thursday';
+					break;
+				case 5:
+					day = 'Friday';
+					break;
+				case 6:
+					day = 'Saturday';
+					break;
+				default:
+					day = 'Stan\'s Day';
+					break;
+			}
+			
+			// Display the date in the HTML using jQuery
+			$("#date").text(`${day}, ${month} ${todayDate.getDate()}`);
+		})
+		// Display the temperature for the first forecast item in the
+	
+			</script>
+		</div>
+	</body>
+</html>
+
+

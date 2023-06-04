@@ -10,8 +10,19 @@ let lMRL = Number(prompt("How long would you like to rent 'The LMRL'?"));
 let BBRL = Number(prompt( 'How long would you like to rent  "The BBRL"?'));
 let HRL = Number (prompt( "How long would you like to rent 'The HRL'?"));
 let rentalCost = prompt( 'Wait, how much is it to rent a movie per day?');
-alert('Alrighty, you are renting " The LMRL" for " + LMRL + " day(s), "The BBRL" for " + BBR + "day(s), "The HRL" for "
-+ HRL + "day(S). It will cost $" + rentalCost + "per movie, per day. Your final total is $" + (( LMRL + BBRL + HRL) * rentalcost));
+let LMRL = 3; // Example value for the number of days renting "The LMRL"
+let BBR = 5; // Example value for the number of days renting "The BBRL"
+let HRL = 2; // Example value for the number of days renting "The HRL"
+let rentalCost = 10; // Example value for the rental cost per movie, per day
+
+let totalLMRL = LMRL * rentalCost;
+let totalBBRL = BBR * rentalCost;
+let totalHRL = HRL * rentalCost;
+let finalTotal = totalLMRL + totalBBRL + totalHRL;
+
+console.log('Alrighty, you are renting "The LMRL" for ' + LMRL + ' day(s), "The BBRL" for ' + BBR + ' day(s), "The HRL" for ' + HRL + ' day(s).');
+console.log('It will cost $' + rentalCost + ' per movie, per day.');
+console.log('Your final total is $' + finalTotal + '.');
 
 // Question 2
 
@@ -22,7 +33,7 @@ let fbHours = prompt("How many hours did you work for meta this week?");
 let amaRate = prompt("How much does amazon pay you per hour?");
 let amaHours = prompt("How many hours did you work for amazon this week?");
 
-alert("Congrats, you got paid: $" + (googHours * googRate * fbHours * fbRate * amaHours * amarate);
+alert("Congrats, you got paid: $" + (googHours * googRate * fbHours * fbRate * amaHours * amarate));
 
 
 // Question 3

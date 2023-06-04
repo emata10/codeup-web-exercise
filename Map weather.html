@@ -36,17 +36,13 @@
 <script>
 	
 	// Get DOM elements
-	const input = document.getElementById('location-input');
-	const btn = document.getElementById('search-btn');
+	const input = document.getElementById('search');
+	const btn = document.querySelector('.search-button');
 	
-	
-	function $(document) {
-		
-
-	
-	$(document).ready(async function () {
+	document.addEventListener("DOMContentLoaded", async function () {
 		"use strict";
-// Initialize map
+		
+		// Initialize map
 		mapboxgl.accessToken = myMapBoxKey;
 		const map = new mapboxgl.Map({
 			container: 'map',
@@ -55,20 +51,20 @@
 			zoom: 3
 		});
 		
-		// the  geocode method from mapbox-geocoder-utils.js
+		// the geocode method from mapbox-geocoder-utils.js
 		geocode("6701 Convair RD, El Paso, TX 79925", myMapBoxKey).then(function (result) {
 			console.log(result);
 			map.setCenter(result);
 			map.setZoom(20);
 		});
-
-// Add geocoder to DOM
+		
+		// Add geocoder to DOM
 		document.getElementById('geocoder-container');
-
-// Initialize weather API url
+		
+		// Initialize weather API url
 		let weatherApiUrl = '';
-
-// Function to get weather data from OpenWeatherMap API
+		
+		// Function to get weather data from OpenWeatherMap API
 		const getWeather = async (url) => {
 			try {
 				const response = await fetch(url);
@@ -77,19 +73,25 @@
 				console.log('Error:', error);
 			}
 		};
+		
 		// Function to display weather data
 		const displayWeather = (data) => {
 			const temp = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);
-			document.getElementById('temp').textContent = ' ${temp}° F';
+			document.getElementById('temp').textContent = ` ${temp}° F`;
 			document.getElementById('desc').textContent = data.weather[0].description.toUpperCase();
-			document.getElementById('icon').setAttribute('src', 'https://openweathermap.org/img/w/${data.weather[0].icon}.png)');
+			document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/w/${data.weather[0].icon}.png`);
 		};
-		// create a handler function
+		
+		// Create a handler function
 		var listener = function (event) {
 			alert('You clicked the button!');
 		}
-
-// Add event listener to search button
+		
+		// Attach event listener to Search button
+		btn.addEventListener('click', listener);
+	});
+	
+	const btn = document.querySelector('.search-button');
 		btn.addEventListener('click', async () => {
 		});
 		// Get geocoder result
@@ -107,19 +109,26 @@
 			});
 			
 			// Update weather API url with latitude and longitude
-			weatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${weatherMapKey}';
+			weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${weatherMapKey}`;
+			async function fetchData() {
+				try {
+					const response = await fetch('https://api.example.com/data');
+					const data = await response.json();
+					console.log(data);
+				} catch (error) {
+					console.error('Error fetching data:', error);
+				}
+			}
 			
-			// Get weather data and display it
-			const weatherData = await getWeather(weatherApiUrl);
-			displayWeather(weatherData);
-		}
-	})
-		};
-	
-	// var marker = new mapboxgl.Marker({
-			draggable: let color;
-	true,
-			color:'#9E8F44FF'
+			fetchData();
+			
+			let markerOptions = {
+				draggable: true,
+				color: '#9E8F44FF',
+			};
+			
+			let marker = new mapboxgl.Marker(markerOptions);
+
 		
 			
 	
@@ -134,26 +143,23 @@
 		}
 		
 		marker.on('dragend', onDragEnd);
-		let monthNames = ["January", "February", "March", "April", "May", "June",
-			"July", "August", "September", "October", "November", "December"
-		];
-		let d = new Date();
-		let month = monthNames[d.getMonth()];
-		let day = d.getDate();
-		let tomorrowSet = d.getDate() + 1;
-		let dayAfterTomorrowSet = d.getDate() + 2;
-		let dayAfterSet = d.getDate() + 3;
-		let dayAfter2Set = d.getDate() + 4;
-		let lastDaySet = d.getDate() + 5;
-		let today = (month < 10 ? '0' : '') + month + ' ' + (day < 10 ? '0' : '') + day + ', ' + d.getFullYear();
-		let tomorrow = (month < 10 ? '0' : '') + month + ' ' + (tomorrowSet < 10 ? '0' : '') + tomorrowSet + ', ' + d.getFullYear();
-		let dayAfterTomorrow = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
-		let dayAfter = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
-		let dayAfter2 = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
-		let lastDay = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();
-		
-		
-});
+	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	let d = new Date();
+	let month = monthNames[d.getMonth()];
+	let day = d.getDate();
+	let tomorrowSet = d.getDate() + 1;
+	let dayAfterTomorrowSet = d.getDate() + 2;
+	let dayAfterSet = d.getDate() + 3;
+	let dayAfter2Set = d.getDate() + 4;
+	let lastDaySet = d.getDate() + 5;
+	
+	let today = `${(month < 10 ? '0' : '')}${month} ${(day < 10 ? '0' : '')}${day}, ${d.getFullYear()}`;
+	let tomorrow = `${(month < 10 ? '0' : '')}${month} ${(tomorrowSet < 10 ? '0' : '')}${tomorrowSet}, ${d.getFullYear()}`;
+	let dayAfterTomorrow = `${(month < 10 ? '0' : '')}${month} ${(dayAfterTomorrowSet < 10 ? '0' : '')}${dayAfterTomorrowSet}, ${d.getFullYear()}`;
+	let dayAfter = `${(month < 10 ? '0' : '')}${month} ${(dayAfterSet < 10 ? '0' : '')}${dayAfterSet}, ${d.getFullYear()}`;
+	let dayAfter2 = `${(month < 10 ? '0' : '')}${month} ${(dayAfter2Set < 10 ? '0' : '')}${dayAfter2Set}, ${d.getFullYear()}`;
+	let lastDay = `${(month < 10 ? '0' : '')}${month} ${(lastDaySet < 10 ? '0' : '')}${lastDaySet}, ${d.getFullYear()}`;
+	
 	$(".search-button").click(function () {
 		var input = $("#search").val();
 		geocode(input, mapboxToken).then(function (result) {
@@ -166,16 +172,11 @@
 			$('#card2').html("");
 			genWeatherTomorrow();
 			$('#card3').html("");
-			genWeatherTomorrow();
 			$('#card4').html("");
-			genWeatherTomorrow();
-			$('#card5').html("");
 			genWeatherDayAfterTomorrow();
-
 		});
 	});
 	function genWeatherToday() {
-
 		marker.on('dragend', onDragEnd);
 		$('#card').html("");
 		var lngLat = marker.getLngLat();
@@ -192,7 +193,24 @@
 			content += "<h3 class='temp'>";
 			content += Math.round(data.currently.temperature) + "°F";
 			content += "</h3>";
-			content += "<img class='icon1'>";
+			content += "<img class='icon1' src='";
+			
+			var icons = [
+				{summary: "clear-day", image: 'icons/clearDay.png'},
+				{summary: "clear-night", image: 'icons/clearNight.png'},
+				{summary: "rain", image: 'icons/rain.png'},
+				{summary: "snow", image: 'icons/snow.png'},
+				{summary: "sleet", image: 'icons/sleet.png'},
+				{summary: "wind", image: 'icons/wind.png'},
+				{summary: "fog", image: 'icons/fog.png'},
+				{summary: "cloudy", image: 'icons/cloudy.png'},
+				{summary: "partly-cloudy-day", image: 'icons/partlyCloudyDay.png'},
+				{summary: "partly-cloudy-night", image: 'icons/partlyCloudyNight.png'}
+			];
+			
+			let icon = icons.find(icon => icon.summary === data.currently.icon);
+			content += icon.image + "' alt='" + icon.summary + "'>";
+			
 			content += "<h6 class='summary'>";
 			content += "Summary: " + data.currently.summary;
 			content += "</h6>";
@@ -206,50 +224,9 @@
 			content += "Wind Speed: " + Math.round(data.currently.windSpeed) + " MPH";
 			content += "</h5>";
 			$('#card').append(content);
-			var icons = [
-				{
-					summary: "clear-day",
-					image: 'icons/clearDay.png'
-				},
-				{
-					summary: "clear-night",
-					image: 'icons/clearNight.png'
-				},
-				{
-					summary: "rain",
-					image: 'icons/rain.png'
-				},
-				{
-					summary: "snow",
-					image: 'icons/snow.png'
-				},
-				{
-					summary: "sleet",
-					image: 'icons/sleet.png'
-				},
-				{
-					summary: "wind",
-					image: 'icons/wind.png'
-				},
-				{
-					summary: "fog",
-					image: 'icons/fog.png'
-				},
-				{
-					summary: "cloudy",
-					image: 'icons/cloudy.png'
-				},
-				{
-					summary: "partly-cloudy-day",
-					image: 'icons/partlyCloudyDay.png'
-				},
-				{
-					summary: "partly-cloudy-night",
-					image: 'icons/partlyCloudyNight.png'
-				},
-
-			];
-			var backgrounds = [
+		});
+	}
+			let icons = [
 				{
 					summary: "clear-day",
 					image: "url('icons/clearDay.gif')"
@@ -302,11 +279,11 @@
 					$('#card').css('background-image', type.image);
 				}
 			});
-		});
+	
 		weather.fail(function () {
 			console.log("try again")
-		})
-	}
+		
+	});
 
 
 	function genWeatherTomorrow() {
@@ -465,110 +442,123 @@
 			content += "<h5 class='windSpeed'>";
 			content += "Wind Speed: " + Math.round(data.daily.data[2].windSpeed) + " MPH";
 			content += "</h5>";
-
-
-			$('#card3').append(content);
-			var icons = [
-				{
-					summary: "clear-day",
-					image: 'icons/clearDay.png'
-				},
-				{
-					summary: "clear-night",
-					image: 'icons/clearNight.png'
-				},
-				{
-					summary: "rain",
-					image: 'icons/rain.png'
-				},
-				{
-					summary: "snow",
-					image: 'icons/snow.png'
-				},
-				{
-					summary: "sleet",
-					image: 'icons/sleet.png'
-				},
-				{
-					summary: "wind",
-					image: 'icons/wind.png'
-				},
-				{
-					summary: "fog",
-					image: 'icons/fog.png'
-				},
-				{
-					summary: "cloudy",
-					image: 'icons/cloudy.png'
-				},
-				{
-					summary: "partly-cloudy-day",
-					image: 'icons/partlyCloudyDay.png'
-				},
-				{
-					summary: "partly-cloudy-night",
-					image: 'icons/partlyCloudyNight.png'
-				},
-
-			];
-			var backgrounds = [
-				{
-					summary: "clear-day",
-					image: "url('icons/clearDay.gif')"
-				},
-				{
-					summary: "clear-night",
-					image: "url('icons/clearNight.gif')"
-				},
-				{
-					summary: "rain",
-					image: "url('icons/rain.gif')"
-				},
-				{
-					summary: "snow",
-					image: "url('icons/snow.gif')"
-				},
-				{
-					summary: "sleet",
-					image: "url('icons/snow.gif')"
-				},
-				{
-					summary: "wind",
-					image: "url('icons/wind.gif')"
-				},
-				{
-					summary: "fog",
-					image: "url('icons/fog.gif')"
-				},
-				{
-					summary: "cloudy",
-					image: "url('icons/cloudy.gif')"
-				},
-				{
-					summary: "partly-cloudy-day",
-					image: "url('icons/partlyCloudyDay.gif')"
-				},
-				{
-					summary: "partly-cloudy-night",
-					image: "url('icons/partlyCloudyNight.gif')"
-				},
-
-			];
-			icons.forEach(function (type) {
-				if (data.daily.data[2].icon === type.summary) {
-					$('.icon3').attr('src', type.image);
+			
+			$(document).ready(function () {
+				updateWeatherCard();
+				
+				function updateWeatherCard() {
+					// Make sure to include the appropriate API call to get the weather data
+					let aftTomWeather = $.getJSON("YOUR_API_CALL_HERE");
+					
+					aftTomWeather.done(function (data) {
+						// Generate the content for card3 based on the weather data
+						// For example:
+						var content = `<h2>Weather for DAY</h2><p>Temperature: ${data.daily.data[2].temperature}</p>`;
+						
+						
+						$('#card3').html(content);
+						var icons = [
+							{
+								summary: "clear-day",
+								image: 'icons/clearDay.png'
+							},
+							{
+								summary: "clear-night",
+								image: 'icons/clearNight.png'
+							},
+							{
+								summary: "rain",
+								image: 'icons/rain.png'
+							},
+							{
+								summary: "snow",
+								image: 'icons/snow.png'
+							},
+							{
+								summary: "sleet",
+								image: 'icons/sleet.png'
+							},
+							{
+								summary: "wind",
+								image: 'icons/wind.png'
+							},
+							{
+								summary: "fog",
+								image: 'icons/fog.png'
+							},
+							{
+								summary: "cloudy",
+								image: 'icons/cloudy.png'
+							},
+							{
+								summary: "partly-cloudy-day",
+								image: 'icons/partlyCloudyDay.png'
+							},
+							{
+								summary: "partly-cloudy-night",
+								image: 'icons/partlyCloudyNight.png'
+							},
+						
+						];
+						var backgrounds = [
+							{
+								summary: "clear-day",
+								image: "url('icons/clearDay.gif')"
+							},
+							{
+								summary: "clear-night",
+								image: "url('icons/clearNight.gif')"
+							},
+							{
+								summary: "rain",
+								image: "url('icons/rain.gif')"
+							},
+							{
+								summary: "snow",
+								image: "url('icons/snow.gif')"
+							},
+							{
+								summary: "sleet",
+								image: "url('icons/snow.gif')"
+							},
+							{
+								summary: "wind",
+								image: "url('icons/wind.gif')"
+							},
+							{
+								summary: "fog",
+								image: "url('icons/fog.gif')"
+							},
+							{
+								summary: "cloudy",
+								image: "url('icons/cloudy.gif')"
+							},
+							{
+								summary: "partly-cloudy-day",
+								image: "url('icons/partlyCloudyDay.gif')"
+							},
+							{
+								summary: "partly-cloudy-night",
+								image: "url('icons/partlyCloudyNight.gif')"
+							},
+						
+						];
+						icons.forEach(function (type) {
+							if (data.daily.data[2].icon === type.summary) {
+								$('.icon3').attr('src', type.image);
+							}
+						});
+						backgrounds.forEach(function (type) {
+							if (data.daily.data[2].icon === type.summary) {
+								$('#card3').css('background-image', type.image);
+							}
+						});
+					});
+					aftTomWeather.fail(function () {
+						console.log("try again")
+					}
 				}
-			});
-			backgrounds.forEach(function (type) {
-				if (data.daily.data[2].icon === type.summary) {
-					$('#card3').css('background-image', type.image);
-				}
-			});
-		});
-		aftTomWeather.fail(function () {
-			console.log("try again")
-		})
-	}
+				
 
 
 

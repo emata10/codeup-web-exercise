@@ -29,120 +29,123 @@
 <script src="js/mapbox-geocoder-utils.js"></script>
 
 	<script>
-// <!--		mapboxgl.accessToken = myMapBoxKey-->
-// <!--		var map = new mapboxgl.Map({-->
-// <!--			container: 'map',-->
-// <!--			style: 'mapbox://styles/mapbox/streets-v9',-->
-// <!--			zoom: 7,-->
-// <!--	       center: [-106.486040, 31.768980],-->
-// <!--		})-->
-	 	mapboxgl.accessToken = myMapBoxKey;
-	 	var map = new mapboxgl.Map({
-		container: 'map',
-	 	style: 'mapbox://styles/mapbox/streets-v9',
-		zoom: 12,
-	 	center: [-105.9372, 35.6869]
-	 });
-		call the function to place the marker and popup
-		placeMarkerAndPopup(
-				{
-					address: '7 W Gutierrez, Santa Fe, NM 87506',
-					popupHTML: '<h3>Sopaipilla Factory Restaurant</h3><p>Awesome Sopaipillas.</p>'
-				},
-				'myMapBoxKey',
-				map
-		);
-			var cafePopup = new mapboxgl.Popup()
-		         .setHTML("<p>L & J Cafe</p>")
-		         .addTo(map);
-
-		     var cafeMarker = new mapboxgl.Marker()
-		         .setLngLat([-106.452580, 31.765310])
-		         .setPopup(cafePopup)
-		         .addTo(map);
-
-			var sunsetPopup = new mapboxgl.Popup()
-				.setHTML("<p>The Kitchen</p>")
-				.addTo(map);
-
-			var sunsetMarker = new mapboxgl.Marker()
-				.setLngLat([-106.247230, 31.802200])
-				.setPopup(sunsetPopup)
-				.addTo(map);
-
-			var centralPopup = new mapboxgl.Popup()
-				.setHTML("<p>Cafe Central</p>")
-				.addTo(map);
-
-			var centralMarker = new mapboxgl.Marker()
-				.setLngLat([-106.491370, 31.757890])
-				.setPopup(centralPopup)
-				.addTo(map);
-
-			var favRestList = [
-				{
-					name: "L & J Cafe",
-					info: "Great Place too Eat!",
-					location: [-106.452580, 31.765310]
-				},
-				{
-					name: "The Kitchen",
-					info: "Great customer service.",
-					location: [-106.247230, 31.802200]
-				},
-				{
-					name: "Cafe Central",
-					info: "The best place ever.",
-					location: [-106.491370, 31.757890]
-				}
-
-			];
-
-			favRestList.forEach(function (restaurant)
+		mapboxgl.accessToken = myMapBoxKey;
+	var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v9',
+			zoom: 7,
+	       center: [-106.486040, 31.768980],
+		 })
+	 	// mapboxgl.accessToken = myMapBoxKey;
+	 	// var map = new mapboxgl.Map({
+		// 	container: 'map',
+		// 	style: 'mapbox://styles/mapbox/streets-v9',
+		// 	zoom: 12,
+		// 	center: [-105.9372, 35.6869]
+		// });
+        //     call the function to place the marker and popup
+        //     placeMarkerAndPopup(
+		// 			{
+		// 				address: '7 W Gutierrez, Santa Fe, NM 87506',
+		// 				popupHTML: '<h3>Sopaipilla Factory Restaurant</h3><p>Awesome Sopaipillas.</p>'
+		// 		},
+		// 		'myMapBoxKey',
+		// 		map
+		// );
+		// 	var cafePopup = new mapboxgl.Popup()
+		//          .setHTML("<p>L & J Cafe</p>")
+		//          .addTo(map);
+		//
+		//      var cafeMarker = new mapboxgl.Marker()
+		//          .setLngLat([-106.452580, 31.765310])
+		//          .setPopup(cafePopup)
+		//          .addTo(map);
+		//
+		// 	var sunsetPopup = new mapboxgl.Popup()
+		// 		.setHTML("<p>The Kitchen</p>")
+		// 		.addTo(map);
+		//
+		// 	var sunsetMarker = new mapboxgl.Marker()
+		// 		.setLngLat([-106.247230, 31.802200])
+		// 		.setPopup(sunsetPopup)
+		// 		.addTo(map);
+		//
+		// 	var centralPopup = new mapboxgl.Popup()
+		// 		.setHTML("<p>Cafe Central</p>")
+		// 		.addTo(map);
+		//
+		// 	var centralMarker = new mapboxgl.Marker()
+		// 		.setLngLat([-106.491370, 31.757890])
+		// 		.setPopup(centralPopup)
+		// 		.addTo(map);
+		//
+		// 	var favRestList = [
+		// 		{
+		// 			name: "L & J Cafe",
+		// 			info: "Great Place too Eat!",
+		// 			location: [-106.452580, 31.765310]
+		// 		},
+		// 		{
+		// 			name: "The Kitchen",
+		// 			info: "Great customer service.",
+		// 			location: [-106.247230, 31.802200]
+		// 		},
+		// 		{
+		// 			name: "Cafe Central",
+		// 			info: "The best place ever.",
+		// 			location: [-106.491370, 31.757890]
+		// 		}
+		//
+		// 	];
+		//
+		// 	favRestList.forEach(function (restaurant)
+		{
+			
+			
+			new mapboxgl.Marker()
+					.setLngLat(restaurant.location)
+					.setPopup(new mapboxgl.Popup()
+							.setHTML(`<h4>${restaurant.name}</h4><p>${restaurant.info}</p>`)
+							.addTo(map));
 			{
-
-
-				new mapboxgl.Marker()
-						.setLngLat(restaurant.location)
-						.setPopup(new mapboxgl.Popup()
-								.setHTML(`<h4>${restaurant.name}</h4><p>${restaurant.info}</p>`)
-								.addTo(map));
-
+			
 			}
-)
-
-
-		function placeMarkerAndPopup(info, token, map) {
-			geocode("7 W Gutierrez, Santa Fe, NM 87506", myMapBoxKey).then(function (coordinates) {
-				var popup = new mapboxgl.Popup()
-						.setHTML(info.popupHTML);
-				var marker = new mapboxgl.Marker()
-						.setLngLat(coordinates)
-						.addTo(map)
-						.setPopup(popup)
-				.popup.addTo(map);
-			});
-
-
-			// Add markers and info windows for each restaurant
-			restaurants.forEach((restaurant) => {
-				const marker = new google.maps.Marker({
-					position: {lat: restaurant.lat, lng: restaurant.lng},
-					map,
-					title: restaurant.name,
+			
+			
+			function placeMarkerAndPopup(info, token, map) {
+				geocode("7 W Gutierrez, Santa Fe, NM 87506", myMapBoxKey).then(function (coordinates) {
+					var popup = new mapboxgl.Popup()
+							.setHTML(info.popupHTML);
+					var marker = new mapboxgl.Marker()
+							.setLngLat(coordinates)
+							.addTo(map)
+							.setPopup(popup)
+							.popup.addTo(map);
 				});
-
-				const infowindow = new google.maps.InfoWindow({
-					content: restaurant.description,
-				});
-
-				marker.addListener("click", () => {
-					infowindow.open({
-						anchor: marker,
+				
+				
+				// Add markers and info windows for each restaurant
+				restaurants.forEach((restaurant) => {
+					const marker = new google.maps.Marker({
+						position: {lat: restaurant.lat, lng: restaurant.lng},
+						map,
+						title: restaurant.name,
+					});
+					
+					const infowindow = new google.maps.InfoWindow({
+						content: restaurant.description,
+					});
+					
+					marker.addListener("click", () => {
+						infowindow.open({
+							anchor: marker,
+						});
 					});
 				});
-			});
-		 }
+			}
+			
+		}
+
 
 
 		
