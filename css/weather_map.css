@@ -1,0 +1,47 @@
+.container {
+    max-width: 1200%;
+    margin: 0 auto;
+    text-align: center;
+}
+h2 {
+    margin-top: 10px;
+}
+.current {
+    margin-bottom: 20px;
+}
+.current-result, .forecast-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.current-info, .current-location, .day {
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+.current-icon {
+    height: 100px;
+}
+.current-info, .day {
+    width: 200px;
+}
+.current-location, .mapboxgl-control-container {
+    width: 100%;
+}
+.forecast {
+    margin-bottom: 60px;
+}
+#search {
+    padding: 15px;
+    width: 50%;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
