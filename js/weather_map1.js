@@ -1,15 +1,7 @@
 var city = "El Paso"; // You can replace "El Paso" with any city you want or get it from user input.
+// console.log(myWeatherKey);
+$(function() {
 
-$.get("https://api.openweathermap.org/data/2.5/onecall", {
-    appid: myWeatherKey,
-    lat:    31.805335,
-    lon:  -106.382434,
-    units: "imperial"
-}).done(function(data) {
-    console.log('The entire response:', data);
-    console.log('Diving in - here is current information: ', data.current);
-    console.log('A step further - information for tomorrow: ', data.daily[1]);
-});
 
 
 // Display current weather conditions
@@ -47,37 +39,35 @@ $.ajax({
 })
 
 
-var mapboxgl
-mapboxgl: mapboxgl
 
 // Access Token definition
-var accessToken = myBoxKey;
-mapboxgl.accessToken = accessToken;
+// var accessToken = myBoxKey;
+mapboxgl.accessToken = myBoxKey;
 
 // Map instance creation
+
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     zoom: 3,
     center: [-106.4959, 31.7574]
 });
-
 // Add geocoder to the map
-map.on('load', function () {
-    map.addControl(
-        new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        })
-    );
-});
+// map.on('load', function () {
+//     map.addControl(
+//         new MapboxGeocoder({
+//             accessToken: mapboxgl.accessToken,
+//             mapboxgl: mapboxgl
+//         })
+//     );
+// });
 
 // Place marker on click event
-map.on('click', function (e) {
-    var coordinates = e.lngLat;
-    var longitude = coordinates.lng;
-    var latitude = coordinates.lat;
-});
+// map.on('click', function (e) {
+//     var coordinates = e.lngLat;
+//     var longitude = coordinates.lng;
+//     var latitude = coordinates.lat;
+// });
 
 // TexInfo object
 var texInfo = {
@@ -96,20 +86,22 @@ function placeMarkerAndPopup(info, token, map) {
             .addTo(map)
             .setPopup(popup);
         popup.addTo(map);
+        marker.addTo(map)
 
     });
 }
-placeMarkerAndPopup(texInfo, accessToken, map);
+placeMarkerAndPopup(texInfo, myBoxKey, map);
 
-mapboxgl.accessToken = 'your_access_token';
-var map = new mapboxgl.Map({
-    container: 'map', // Container ID
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-96, 37.8],
-    zoom: 3
-});
+// mapboxgl.accessToken = myBoxKey;
+// var map = new mapboxgl.Map({
+//     container: 'map', // Container ID
+//     style: 'mapbox://styles/mapbox/streets-v11',
+//     center: [-96, 37.8],
+//     zoom: 3
+// });
 
-var geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl
+// var geocoder = new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken,
+//     mapboxgl: mapboxgl
+// });
 });
